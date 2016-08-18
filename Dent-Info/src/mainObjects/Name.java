@@ -1,16 +1,32 @@
 package mainObjects;
 
+import exceptions.EmptyNameException;
+
 public class Name {
 	private String firstName;
 	private String middleName;
 	private String lastName;
+
+	public Name(String firstName, String middleName, String lastName) {
+		this.setFirstName(firstName);
+		this.setMiddleName(middleName);
+		this.setLastName(lastName);
+
+		if (this.firstName.length() == 0 || this.lastName.length() == 0) {
+			throw new EmptyNameException();
+		}
+	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		if (firstName != null && firstName.length() > 0) {
+			this.firstName = firstName;
+		} else {
+			this.firstName = "";
+		}
 	}
 
 	public String getMiddleName() {
@@ -18,7 +34,11 @@ public class Name {
 	}
 
 	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+		if (middleName != null && middleName.length() > 0) {
+			this.middleName = middleName;
+		} else {
+			this.middleName = "";
+		}
 	}
 
 	public String getLastName() {
@@ -26,7 +46,11 @@ public class Name {
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		if (lastName != null && lastName.length() > 0) {
+			this.lastName = lastName;
+		} else {
+			this.lastName = "";
+		}
 	}
 
 	public String getFullName() {
