@@ -1,60 +1,80 @@
 package mainObjects;
 
 import exceptions.EmptyNameException;
+import tools.EmailValidator;
 
-public class People {
+public abstract class People {
 	private String username;
-	private Name name;
+	private String email;
 	private String password;
-	
-	
-	
-	
+	private Name name;
+	private byte[] egn;
+	private Address address;
+
+	public People(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+
+		EmailValidator emailValidator = new EmailValidator();
+		if (emailValidator.validate(email)) {
+			this.email = email;
+		} else {
+			throw new InvalidEmailException(email);
+		}
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public String getUsername() {
 		return username;
 	}
 
-
-
-
 	private void setUsername(String username) {
-		if(username.length() > 4){
-		this.username = username;}
-		else{
+		if (username.length() > 4) {
+			this.username = username;
+		} else {
 			throw new InvalidUserNameException(username);
 		}
 	}
-
-
-
 
 	public Name getName() {
 		return name;
 	}
 
-
-
-
 	public void setName(Name name) {
 		this.name = name;
 	}
-
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	public byte[] getEgn() {
+		return egn;
+	}
 
-
+	public void setEgn(byte[] egn) {
+		this.egn = egn;
+	}
 
 	private class Name {
 		private String firstName;
