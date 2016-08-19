@@ -1,7 +1,11 @@
-package mainObjects;
+package exceptions;
 
-public class InvalidEmailException extends IllegalArgumentException {
-	private static final long serialVersionUID = 7533467833884101397L;
+public class InvalidEmailException extends Exception {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2045484855560157616L;
 	private String email;
 
 	public InvalidEmailException(String email) {

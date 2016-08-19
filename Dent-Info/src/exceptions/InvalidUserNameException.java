@@ -1,6 +1,6 @@
-package mainObjects;
+package exceptions;
 
-public class InvalidUserNameException extends IllegalArgumentException {
+public class InvalidUserNameException extends Exception {
 	private String username;
 
 	public InvalidUserNameException(String username) {

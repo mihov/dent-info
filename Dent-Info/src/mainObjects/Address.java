@@ -1,19 +1,35 @@
 package mainObjects;
 
 public class Address {
+	private String city;
+	private String country;
+	private String state;
 	private String addressLine1;
 	private String addressLine2;
-	private String city;
-	private String state;
 	private String zip;
 
-	public Address(String addressLine1, String addressLine2, String city, String state, String zip) {
-		super();
-		this.setAddressLine1(addressLine1);
-		this.setAddressLine2(addressLine2);
-		this.setCity(city);
-		this.setState(state);
-		this.setZip(zip);
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getAddressLine1() {
@@ -30,22 +46,6 @@ public class Address {
 
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public String getZip() {

@@ -1,6 +1,8 @@
 package mainObjects;
 
 import exceptions.EmptyNameException;
+import exceptions.InvalidEmailException;
+import exceptions.InvalidUserNameException;
 import tools.EmailValidator;
 
 public abstract class People {
@@ -8,21 +10,22 @@ public abstract class People {
 	private String email;
 	private String password;
 	private Name name;
-	private byte[] egn;
+	private String egn;
 	private Address address;
 
-	public People(String username, String email, String password) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
+	public People(String username, String email, String password) throws InvalidEmailException, InvalidUserNameException {
+		this.setUsername(username);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.name = new Name();
+		this.address = new Address();
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws InvalidEmailException {
 
 		EmailValidator emailValidator = new EmailValidator();
 		if (emailValidator.validate(email)) {
@@ -44,7 +47,7 @@ public abstract class People {
 		return username;
 	}
 
-	private void setUsername(String username) {
+	private void setUsername(String username) throws InvalidUserNameException {
 		if (username.length() > 4) {
 			this.username = username;
 		} else {
@@ -68,11 +71,11 @@ public abstract class People {
 		this.password = password;
 	}
 
-	public byte[] getEgn() {
+	public String getEgn() {
 		return egn;
 	}
 
-	public void setEgn(byte[] egn) {
+	public void setEgn(String egn) {
 		this.egn = egn;
 	}
 
@@ -81,20 +84,15 @@ public abstract class People {
 		private String middleName;
 		private String lastName;
 
-		public Name(String firstName, String middleName, String lastName) {
-			this.setFirstName(firstName);
-			this.setMiddleName(middleName);
-			this.setLastName(lastName);
+		public Name() {
 
-			if (this.firstName.length() == 0 || this.lastName.length() == 0) {
-				throw new EmptyNameException();
-			}
 		}
 
 		public String getFirstName() {
 			return firstName;
 		}
 
+		@SuppressWarnings("unused")
 		public void setFirstName(String firstName) {
 			if (firstName != null && firstName.length() > 0) {
 				this.firstName = firstName;
@@ -107,6 +105,7 @@ public abstract class People {
 			return middleName;
 		}
 
+		@SuppressWarnings("unused")
 		public void setMiddleName(String middleName) {
 			if (middleName != null && middleName.length() > 0) {
 				this.middleName = middleName;
@@ -119,6 +118,7 @@ public abstract class People {
 			return lastName;
 		}
 
+		@SuppressWarnings("unused")
 		public void setLastName(String lastName) {
 			if (lastName != null && lastName.length() > 0) {
 				this.lastName = lastName;
@@ -127,6 +127,7 @@ public abstract class People {
 			}
 		}
 
+		@SuppressWarnings("unused")
 		public String getFullName() {
 			StringBuilder builder = new StringBuilder();
 			builder.append(getFirstName());
