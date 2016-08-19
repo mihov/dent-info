@@ -83,6 +83,7 @@ public class Order {
 			this.servicesList.put(position, new ArrayList<>());
 		}
 		this.servicesList.get(position).add(service);
+		this.calculatePrice();
 	}
 
 	public void calculatePrice() {
@@ -97,13 +98,21 @@ public class Order {
 
 	public String getServiceList() {
 		StringBuilder builder = new StringBuilder();
+		builder.append("=== Service List ===\n");
+
 		for (Entry<ToothPosition, ArrayList<Service>> element : this.servicesList.entrySet()) {
+			builder.append("   ");
 			builder.append(element.getKey());
+
 			for (Service service_element : element.getValue()) {
-				builder.append("\n\t");
+				builder.append("\t");
 				builder.append(service_element);
 			}
 		}
+		builder.append("=== Total ");
+		builder.append(this.getPrice());
+		builder.append(" lv. ===\n");
+		builder.append("=== End Of Service List ===\n");
 
 		return builder.toString();
 	}

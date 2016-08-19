@@ -74,7 +74,7 @@ public class Service {
 		builder.append(shortName);
 		builder.append("\t| ");
 		builder.append(getPrice());
-		builder.append(" lv.");
+		builder.append(" lv.\n");
 		return builder.toString();
 	}
 
