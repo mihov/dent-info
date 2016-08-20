@@ -1,27 +1,31 @@
 package mainObjects;
 
-import java.math.BigDecimal;
-
 public class Service {
-	static int id = 1;
-	private int serialNumber;
+	static Integer id = 1;
+	private String serialNumber;// This is custom unique ID
 	private String longName;
 	private String shortName;
 	private Double price;
-	// private BigDecimal price;
 
-	public Service(String longName, String shortName, Double price) {
-		this.serialNumber = id++;
+	public Service(String longName, String shortName, Double price, String serialNumber) {
+		if (serialNumber.length() < 1) {
+			this.serialNumber = String.valueOf(id++);
+		} else {
+			this.serialNumber = serialNumber;
+		}
 		this.setLongName(longName);
 		this.setShortName(shortName);
 		this.setPrice(price);
 	}
+	
+	
+	
 
-	public int getSerialNumber() {
+	public String getSerialNumber() {
 		return serialNumber;
 	}
 
-	public void setSerialNumber(int serialNumber) {
+	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
@@ -41,10 +45,6 @@ public class Service {
 		this.shortName = shortName;
 	}
 
-	// public BigDecimal getPrice() {
-	// return price;
-	// }
-
 	public Double getPrice() {
 		return price;
 	}
@@ -54,7 +54,7 @@ public class Service {
 			this.price = price;
 			// this.price = BigDecimal.valueOf(price);
 		} else {
-			System.err.println("Price can not be negative");
+			System.err.println("Price can not be negative!");
 		}
 	}
 
