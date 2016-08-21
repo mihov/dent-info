@@ -2,10 +2,7 @@ package exceptions;
 
 public class EmptyNameException extends IllegalArgumentException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7979332863456621885L;
 	
 	@Override
 	public String getMessage() {

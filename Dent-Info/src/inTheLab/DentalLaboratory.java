@@ -108,6 +108,7 @@ public class DentalLaboratory {
 		if (dentist != null) {
 			if (!this.dentistList.containsKey(dentist.getUsername())) {
 				this.dentistList.put(dentist.getUsername(), dentist);
+			
 				return true;
 			} else {
 				return false; // dentist exist
@@ -133,6 +134,19 @@ public class DentalLaboratory {
 			return null; // service is null
 		}
 	}
+	
+	public Boolean changeService(Service service) {
+		if (service != null) {
+			if (this.serviceList.containsKey(service.getSerialNumber())) {
+				this.serviceList.put(service.getSerialNumber(), service);
+				return true;
+			} else {
+				return false; // service do not exist
+			}
+		} else {
+			return null; // service is null
+		}
+	}	
 
 	public Order getOrderByID(Integer id) {
 		return this.ordersById.get(id);

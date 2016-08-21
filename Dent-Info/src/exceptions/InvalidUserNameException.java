@@ -2,6 +2,7 @@ package exceptions;
 
 public class InvalidUserNameException extends Exception {
 	private String username;
+	private static final long serialVersionUID = -3431691429542567082L;
 
 	public InvalidUserNameException(String username) {
 		this.username = username;
@@ -12,10 +13,4 @@ public class InvalidUserNameException extends Exception {
 		// TODO Auto-generated method stub
 		return "Username: " + this.username + " lenght is less than 4";
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3431691429542567082L;
-
 }

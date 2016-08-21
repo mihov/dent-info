@@ -31,25 +31,45 @@ public class TheSystem {
 	}
 
 	public Boolean createNewManager(String username, String email, String password) {
-		if (!isThisUserExist(username)) {
-			try {
-				this.managerList.put(username, new Manager(username, email, password, this));
-				this.userList.put(username, this.managerList.get(username));
+		try {
+			Manager tempManager = new Manager(username, email, password, this);
+
+			if (addUser(tempManager)) {
+				this.managerList.put(username, tempManager);
 				return true;
-			} catch (InvalidEmailException e) {
-				System.err.println(e.getMessage());
-				e.printStackTrace();
-				return false;
-			} catch (InvalidUserNameException e) {
-				System.err.println(e.getMessage());
-				e.printStackTrace();
+			} else {
+				System.out.println("This username Exist!");
 				return false;
 			}
-		} else {
-			System.err.println("This username Exist!");
+
+		} catch (InvalidEmailException e) {
+			System.out.println(e.getMessage());
+			// e.printStackTrace();
+			return false;
+		} catch (InvalidUserNameException e) {
+			System.out.println(e.getMessage());
+			// e.printStackTrace();
 			return false;
 		}
 
+	}
+
+	
+	/**
+	 * Verifies that the user already exists, if the user does not exist, add it
+	 * to the list of users and returns true, otherwise returns false.
+	 * 
+	 * @param people
+	 * @return Can you add this user to the list of users?
+	 */
+	public Boolean addUser(People people) {
+		if (!isThisUserExist(people.getUsername())) {
+			this.userList.put(people.getUsername(), people);
+			return true;
+		} else {
+			System.out.println("This user already exists!");
+			return false;
+		}
 	}
 
 	public Manager getManager(String username) {
@@ -86,6 +106,14 @@ public class TheSystem {
 			return this.userList.get(userName).comparePassword(userPassword);
 		} else {
 			return false;
+		}
+	}
+
+	public People logIn(String userName, String userPassword) {
+		if (logInCheck(userName, userPassword)) {
+			return this.userList.get(userName);
+		} else {
+			return null;
 		}
 	}
 }
