@@ -1,10 +1,13 @@
-package mainObjects;
+package inTheLab;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import mainObjects.Dentist;
+import mainObjects.Patient;
 
 public class Order {
 	private static int idCreator;

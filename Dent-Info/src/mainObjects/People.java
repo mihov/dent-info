@@ -3,6 +3,7 @@ package mainObjects;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidPhoneException;
 import exceptions.InvalidUserNameException;
+import inTheLab.DentalLaboratory;
 import tools.EmailValidator;
 import tools.PhoneValidator;
 
@@ -15,6 +16,7 @@ public abstract class People {
 	private Address address;
 	private String phone1;
 	private String phone2;
+	private DentalLaboratory currentLab;
 
 	public People(String username, String email, String password)
 			throws InvalidEmailException, InvalidUserNameException {
@@ -23,6 +25,7 @@ public abstract class People {
 		this.setPassword(password);
 		this.name = new Name();
 		this.address = new Address();
+		this.currentLab = null;
 	}
 
 	public String getEmail() {
@@ -144,6 +147,20 @@ public abstract class People {
 			builder.append(getAddress());
 		builder.append("\n");
 		return builder.toString();
+	}
+
+	/**
+	 * @return the currentLab
+	 */
+	public DentalLaboratory getCurrentLab() {
+		return currentLab;
+	}
+
+	/**
+	 * @param currentLab the currentLab to set
+	 */
+	public void setCurrentLab(DentalLaboratory currentLab) {
+		this.currentLab = currentLab;
 	}
 
 	private class Name {

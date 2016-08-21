@@ -1,4 +1,4 @@
-package mainObjects;
+package inTheLab;
 
 public enum ToothPosition {
 	UL1(11), UL2(12), UL3(13), UL4(14), UL5(15), UL6(16), UL7(17), UL8(18),

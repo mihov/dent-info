@@ -4,12 +4,12 @@ import java.util.Date;
 
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
-import mainObjects.DateReason;
+import inTheLab.DateReason;
+import inTheLab.Order;
+import inTheLab.Service;
+import inTheLab.ToothPosition;
 import mainObjects.Dentist;
-import mainObjects.Order;
 import mainObjects.Patient;
-import mainObjects.Service;
-import mainObjects.ToothPosition;
 
 public class Demo {
 

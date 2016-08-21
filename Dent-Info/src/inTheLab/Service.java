@@ -1,4 +1,4 @@
-package mainObjects;
+package inTheLab;
 
 public class Service {
 	static Integer id = 1;

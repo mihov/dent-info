@@ -1,14 +1,18 @@
-package mainObjects;
+package inTheLab;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
 import exceptions.InvalidUserNameException;
+import mainObjects.Address;
+import mainObjects.Dentist;
+import mainObjects.Patient;
 
 public class DentalLaboratory {
 	private String bulstat;
 	private String name;
 	private Address address;
+	private Manager manager;
 	private HashMap<String, Manager> managerList;
 	private HashMap<String, Dentist> dentistList;
 	private HashMap<String, Service> serviceList;
@@ -22,10 +26,11 @@ public class DentalLaboratory {
 	 * @param address
 	 * @throws InvalidUserNameException 
 	 */
-	public DentalLaboratory(String bulstat, String name, Address address) throws InvalidUserNameException {
+	DentalLaboratory(String bulstat, String name, Address address, Manager manager) throws InvalidUserNameException {
 		this.setBulstat(bulstat);
 		this.setName(name);
 		this.setAddress(address);
+		this.setManager(manager);
 		this.managerList = new HashMap<>();
 		this.dentistList = new HashMap<>();
 		this.serviceList = new HashMap<>();
@@ -79,6 +84,20 @@ public class DentalLaboratory {
 		} else {
 			return false;// manage is null
 		}
+	}
+
+	/**
+	 * @return the manager
+	 */
+	public Manager getManager() {
+		return manager;
+	}
+
+	/**
+	 * @param manager the manager to set
+	 */
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
 	public Dentist getDentist(String dentistUserName) {
