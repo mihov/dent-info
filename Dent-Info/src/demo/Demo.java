@@ -10,43 +10,28 @@ import inTheLab.Service;
 import inTheLab.ToothPosition;
 import mainObjects.Dentist;
 import mainObjects.Patient;
+import mainObjects.TheSystem;
 
 public class Demo {
 
 	public static void main(String[] args) {
-		Patient p1 = null;
-		Dentist d1 = null;
-		try {
-			p1 = new Patient("patient1", "patient1@email.com", "Password");
-		} catch (InvalidEmailException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidUserNameException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("Start!");
+		
+		TheSystem s1 = new TheSystem();
 
-		try {
-			d1 = new Dentist("dentist1", "dentist1@mail.com", "Password");
-		} catch (InvalidEmailException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidUserNameException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("Create manager: " + s1.createNewManager("manager", "Manager1@abv.bg", "Password"));
+		System.out.println("Create manager: " + s1.createNewManager("manager", "Manager1@abv.bg", "Password"));
 
-		Order or1 = new Order(p1, d1);
-		or1.addDate(DateReason.ENTER, new Date());
-		System.out.println(or1.getDateList());
+		System.out.println("Login: " + s1.logInCheck("manager", "Passwor"));
+		System.out.println("Login: " + s1.logInCheck("manage", "Password"));
+		System.out.println("Login: " + s1.logInCheck("manager", "Password"));
 
-		or1.addService(ToothPosition.DL1, new Service("Metalo-keramika", "MeKer", 20.00, ""));
-		or1.addService(ToothPosition.DL1, new Service("Plastika", "Plast", 30.00, "66"));
-		or1.addService(ToothPosition.DL1, new Service("Korona", "Kor", 40.00, "66"));
-		or1.addService(ToothPosition.DL2, new Service("Metalo-keramika", "MeKer", 20.00, "66"));
-		or1.addService(ToothPosition.DL3, new Service("Metalo-keramika", "MeKer", 20.00, "66"));
+		System.out.println("Create Lab: " + s1.getManager("manager").createLab("1234567890", "Dental Lab 123", null));
+		System.out.println("Create Lab: " + s1.getManager("manager").createLab("1234567890", "Dental Lab 123", null));
+		System.out.println(s1.getLab("1234567890").getName());
+		System.out.println(s1.getLab("123456780").getName());
+		
 
-		System.out.println(or1.getServiceList());
-
+		System.out.println("End!");
 	}
 }

@@ -3,6 +3,7 @@ package mainObjects;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
 import inTheLab.DentalLaboratory;
 import inTheLab.Manager;
@@ -10,8 +11,8 @@ import inTheLab.Manager;
 public class TheSystem {
 	private HashMap<String, Administrator> adminList;// <AdminUserName,
 														// Administrator>
-	private HashMap<String, HashSet<String>> managerLabsList;// <ManagerUserName,
-																// LaboratoriesBulstat>
+	private HashMap<String, Manager> managerList;// <ManagerUserName,
+													// LaboratoriesBulstat>
 	private HashMap<String, DentalLaboratory> laboratoryList;// <Bulstat,
 																// DentalLaboratory>
 	private HashMap<String, People> userList;
@@ -24,13 +25,39 @@ public class TheSystem {
 	 */
 	public TheSystem() {
 		this.adminList = new HashMap<>();
-		this.managerLabsList = new HashMap<>();
+		this.managerList = new HashMap<>();
 		this.laboratoryList = new HashMap<>();
 		this.userList = new HashMap<>();
 	}
 
-	public Boolean isThisUserExist(String userName) {
-		return this.userList.containsKey(userName);
+	public Boolean createNewManager(String username, String email, String password) {
+		if (!isThisUserExist(username)) {
+			try {
+				this.managerList.put(username, new Manager(username, email, password, this));
+				this.userList.put(username, this.managerList.get(username));
+				return true;
+			} catch (InvalidEmailException e) {
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+				return false;
+			} catch (InvalidUserNameException e) {
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+				return false;
+			}
+		} else {
+			System.err.println("This username Exist!");
+			return false;
+		}
+
+	}
+
+	public Manager getManager(String username) {
+		return this.managerList.get(username);
+	}
+
+	public Boolean isThisUserExist(String username) {
+		return this.userList.containsKey(username);
 	}
 
 	public Boolean isThisLabExist(String labBulstat) {
@@ -38,7 +65,12 @@ public class TheSystem {
 	}
 
 	public DentalLaboratory getLab(String bulstat) {
-		return this.laboratoryList.get(bulstat);
+		if (isThisLabExist(bulstat)) {
+			return this.laboratoryList.get(bulstat);
+		} else {
+			return null;
+		}
+
 	}
 
 	public Boolean addNewLab(DentalLaboratory dentLab) {
