@@ -11,8 +11,7 @@ import mainObjects.TheSystem;
 public class Manager extends People {
 	private TheSystem theSystem;
 
-	public Manager(String username, String email, String password, TheSystem theSystem)
-			throws InvalidEmailException, InvalidUserNameException {
+	public Manager(String username, String email, String password, TheSystem theSystem)throws InvalidEmailException, InvalidUserNameException {
 		super(username, email, password);
 		this.theSystem = theSystem;
 
@@ -20,7 +19,7 @@ public class Manager extends People {
 
 	public Boolean createLab(String bulstat, String name) {
 		if (this.getCurrentLab() == null) {
-			if (!this.theSystem.isThisLabExist(bulstat)) {
+			if (!this.theSystem.doesThisLabExist(bulstat)) {
 				try {
 					this.setCurrentLab(new DentalLaboratory(bulstat, name, null, this));
 					this.theSystem.addNewLab(getCurrentLab());

@@ -9,6 +9,7 @@ import inTheLab.DentalLaboratory;
 import inTheLab.Manager;
 
 public class TheSystem {
+	
 	private HashMap<String, Administrator> adminList;// <AdminUserName,
 														// Administrator>
 	private HashMap<String, Manager> managerList;// <ManagerUserName,
@@ -63,7 +64,7 @@ public class TheSystem {
 	 * @return Can you add this user to the list of users?
 	 */
 	public Boolean addUser(People people) {
-		if (!isThisUserExist(people.getUsername())) {
+		if (!doesThisUserExist(people.getUsername())) {
 			this.userList.put(people.getUsername(), people);
 			return true;
 		} else {
@@ -76,16 +77,16 @@ public class TheSystem {
 		return this.managerList.get(username);
 	}
 
-	public Boolean isThisUserExist(String username) {
+	public Boolean doesThisUserExist(String username) {
 		return this.userList.containsKey(username);
 	}
 
-	public Boolean isThisLabExist(String labBulstat) {
+	public Boolean doesThisLabExist(String labBulstat) {
 		return this.laboratoryList.containsKey(labBulstat);
 	}
 
 	public DentalLaboratory getLab(String bulstat) {
-		if (isThisLabExist(bulstat)) {
+		if (doesThisLabExist(bulstat)) {
 			return this.laboratoryList.get(bulstat);
 		} else {
 			return null;
@@ -94,7 +95,7 @@ public class TheSystem {
 	}
 
 	public Boolean addNewLab(DentalLaboratory dentLab) {
-		if (!isThisLabExist(dentLab.getBulstat())) {
+		if (!doesThisLabExist(dentLab.getBulstat())) {
 			this.laboratoryList.put(dentLab.getBulstat(), dentLab);
 			return true;
 		}
@@ -102,7 +103,7 @@ public class TheSystem {
 	}
 
 	public Boolean logInCheck(String userName, String userPassword) {
-		if (isThisUserExist(userName)) {
+		if (doesThisUserExist(userName)) {
 			return this.userList.get(userName).comparePassword(userPassword);
 		} else {
 			return false;
