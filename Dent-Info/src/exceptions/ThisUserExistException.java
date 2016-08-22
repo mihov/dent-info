@@ -1,13 +1,13 @@
 package exceptions;
 
-public class ThisUserExist extends Exception {
+public class ThisUserExistException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4179527998836418095L;
 	private String user;
 
-	public ThisUserExist(String user) {
+	public ThisUserExistException(String user) {
 		this.user = user;
 	}
 

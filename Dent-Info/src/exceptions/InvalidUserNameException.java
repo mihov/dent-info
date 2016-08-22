@@ -10,7 +10,6 @@ public class InvalidUserNameException extends Exception {
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Username: " + this.username + " lenght is less than 4";
 	}
 }

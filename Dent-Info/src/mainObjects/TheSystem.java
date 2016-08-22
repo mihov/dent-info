@@ -3,6 +3,7 @@ package mainObjects;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import exceptions.InvalidEgnException;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
 import inTheLab.DentalLaboratory;
@@ -10,13 +11,13 @@ import inTheLab.Manager;
 
 public class TheSystem {
 	
-	private HashMap<String, Administrator> adminList;// <AdminUserName,
-														// Administrator>
-	private HashMap<String, Manager> managerList;// <ManagerUserName,
-													// LaboratoriesBulstat>
-	private HashMap<String, DentalLaboratory> laboratoryList;// <Bulstat,
+	private HashMap<String, Administrator> adminList;			// <AdminUserName,
+																// Administrator>
+	private HashMap<String, Manager> managerList;				// <ManagerUserName,
+																// LaboratoriesBulstat>
+	private HashMap<String, DentalLaboratory> laboratoryList;	// <Bulstat,
 																// DentalLaboratory>
-	private HashMap<String, Person> userList;
+	private HashMap<String, Person> userList;					//AllUsers
 
 	/**
 	 * @param adminList
@@ -37,9 +38,9 @@ public class TheSystem {
 	 * @param email
 	 * @param password
 	 */
-	public void createNewManager(String username, String email, String password) {
+	public void createNewManager(String username, String email, String password,String egn) {
 		try {
-			Manager tempManager = new Manager(username, email, password, this);
+			Manager tempManager = new Manager(username, email, password,this, egn);
 
 			if (addUser(tempManager)) {
 				this.managerList.put(username, tempManager);
@@ -48,11 +49,12 @@ public class TheSystem {
 
 		} catch (InvalidEmailException e) {
 			System.out.println(e.getMessage());
-			// e.printStackTrace();
 			return;
-		} catch (InvalidUserNameException e) {
-			System.out.println(e.getMessage());
-			// e.printStackTrace();
+		} catch (InvalidUserNameException e1) {
+			System.out.println(e1.getMessage());
+			return;
+		}catch(InvalidEgnException e2){
+			System.out.println(e2.getMessage());
 			return;
 		}
 

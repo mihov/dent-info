@@ -1,8 +1,9 @@
 package inTheLab;
 
+import exceptions.InvalidEgnException;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
-import exceptions.ThisUserExist;
+import exceptions.ThisUserExistException;
 import mainObjects.Address;
 import mainObjects.Dentist;
 import mainObjects.Person;
@@ -11,12 +12,13 @@ import mainObjects.TheSystem;
 public class Manager extends Person {
 	private TheSystem theSystem;
 
-	public Manager(String username, String email, String password, TheSystem theSystem)throws InvalidEmailException, InvalidUserNameException {
-		super(username, email, password);
+	public Manager(String username, String email, String password, TheSystem theSystem,String egn)throws InvalidEmailException, InvalidUserNameException, InvalidEgnException {
+		super(username, email, password,egn);
 		this.theSystem = theSystem;
 
 	}
-
+	
+	
 	public Boolean createLab(String bulstat, String name) {
 		if (this.getCurrentLab() == null) {
 			if (!this.theSystem.doesThisLabExist(bulstat)) {
@@ -38,22 +40,24 @@ public class Manager extends Person {
 
 	}
 
-	public Boolean addNewDentist(String username, String email) {
+	public Boolean addNewDentist(String username, String email,String password,String egn) {
 		try {
-			Dentist tempDentist = new Dentist(username, email, email);
+			Dentist tempDentist = new Dentist(username, email,password,egn);
 
 			if (this.theSystem.addUser(tempDentist)) {
 				this.getCurrentLab().setNewDentist(tempDentist);
 				return true;
 			} else {
-				throw new ThisUserExist(username);
+				throw new ThisUserExistException(username);
 			}
 		} catch (InvalidEmailException e) {
 			System.out.println(e.getMessage());
-		} catch (InvalidUserNameException e) {
-			System.out.println(e.getMessage());
-		} catch (ThisUserExist e) {
-			System.out.println(e.getMessage());
+		} catch (InvalidUserNameException e1) {
+			System.out.println(e1.getMessage());
+		} catch (ThisUserExistException e2) {
+			System.out.println(e2.getMessage());
+		}catch(InvalidEgnException e3){
+			System.out.println(e3.getMessage());
 		}
 		return false;
 	}

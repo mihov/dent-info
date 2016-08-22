@@ -16,7 +16,6 @@ public class InvalidPhoneException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Invalid phone: " + msg;
 	}
 	

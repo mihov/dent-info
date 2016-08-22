@@ -19,8 +19,8 @@ public class Demo {
 
 		TheSystem s1 = new TheSystem();
 
-		s1.createNewManager("manager", "Manager1@abv.bg", "Password");
-		s1.createNewManager("manager", "Manager1@abv.bg", "Password");
+		s1.createNewManager("manager", "Manager1@abv.bg", "Password","8512136427");
+		s1.createNewManager("manager", "Manager1@abv.bg", "Password", "9003145012");
 
 		System.out.println("Login: " + s1.logIn("manager", "Passwor"));
 		System.out.println("Login: " + s1.logIn("manage", "Password"));
@@ -33,6 +33,7 @@ public class Demo {
 		Manager m1 = null;
 		Dentist d1 = null;
 		Patient p1 = null;
+		//checking the instance of the person
 		if (pp1 instanceof Manager) {
 			m1 = (Manager) pp1;
 			System.out.println("I'm a manager");
@@ -54,7 +55,7 @@ public class Demo {
 		
 		
 		if (m1 != null) {
-			m1.addNewDentist("dentist1", "dentist1@asd.ddd");
+			m1.addNewDentist("dentist1", "dentist1@asd.ddd","324252","7507238541");
 			m1.addNewService("Metalo-Keramika", "MK", 24.00, "mk01");
 			System.out.println(m1.getCurrentLab().getService("mk01").showFull());
 		}

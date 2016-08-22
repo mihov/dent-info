@@ -2,6 +2,7 @@ package mainObjects;
 
 import java.util.HashMap;
 
+import exceptions.InvalidEgnException;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
 
@@ -9,9 +10,9 @@ public class Dentist extends Person {
 	private HashMap<String, Patient> patientlist;
 	private String bulstat;
 
-	public Dentist(String username, String email, String password)
-			throws InvalidEmailException, InvalidUserNameException {
-		super(username, email, password);
+	public Dentist(String username, String email, String password,String egn)
+			throws InvalidEmailException, InvalidUserNameException, InvalidEgnException {
+		super(username, email, password,egn);
 		this.patientlist = new HashMap<>();
 	}
 
