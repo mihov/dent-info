@@ -7,7 +7,7 @@ import inTheLab.DentalLaboratory;
 import tools.EmailValidator;
 import tools.PhoneValidator;
 
-public abstract class People {
+public abstract class Person {
 	private String username;
 	private String email;
 	private String password;
@@ -18,7 +18,7 @@ public abstract class People {
 	private String phone2;
 	private DentalLaboratory currentLab;
 
-	public People(String username, String email, String password)
+	public Person(String username, String email, String password)
 			throws InvalidEmailException, InvalidUserNameException {
 		this.setUsername(username);
 		this.setEmail(email);

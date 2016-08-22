@@ -1,7 +1,5 @@
 package demo;
 
-import java.util.Date;
-
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
 import inTheLab.DateReason;
@@ -11,7 +9,7 @@ import inTheLab.Service;
 import inTheLab.ToothPosition;
 import mainObjects.Dentist;
 import mainObjects.Patient;
-import mainObjects.People;
+import mainObjects.Person;
 import mainObjects.TheSystem;
 
 public class Demo {
@@ -27,21 +25,27 @@ public class Demo {
 		System.out.println("Login: " + s1.logIn("manager", "Passwor"));
 		System.out.println("Login: " + s1.logIn("manage", "Password"));
 		System.out.println("Login: " + s1.logIn("manager", "Password"));
-
-		People pp1 = s1.logIn("manager", "Password");
+		
+		
+		
+		Person pp1 = s1.logIn("manager", "Password");
+		
 		Manager m1 = null;
 		Dentist d1 = null;
 		Patient p1 = null;
 		if (pp1 instanceof Manager) {
 			m1 = (Manager) pp1;
+			System.out.println("I'm a manager");
 		}
 
 		if (pp1 instanceof Dentist) {
 			d1 = (Dentist) pp1;
+			System.out.println("I'm a dentist");
 		}
 
 		if (pp1 instanceof Patient) {
 			p1 = (Patient) pp1;
+			System.out.println("I'm a patient");
 		}
 
 		System.out.println("Create Lab: " + s1.getManager("manager").createLab("1234567890", "Dental Lab 123"));

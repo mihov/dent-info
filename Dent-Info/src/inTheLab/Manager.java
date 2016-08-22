@@ -5,10 +5,10 @@ import exceptions.InvalidUserNameException;
 import exceptions.ThisUserExist;
 import mainObjects.Address;
 import mainObjects.Dentist;
-import mainObjects.People;
+import mainObjects.Person;
 import mainObjects.TheSystem;
 
-public class Manager extends People {
+public class Manager extends Person {
 	private TheSystem theSystem;
 
 	public Manager(String username, String email, String password, TheSystem theSystem)throws InvalidEmailException, InvalidUserNameException {

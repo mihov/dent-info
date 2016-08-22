@@ -5,7 +5,7 @@ import java.util.HashMap;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidUserNameException;
 
-public class Dentist extends People {
+public class Dentist extends Person {
 	private HashMap<String, Patient> patientlist;
 	private String bulstat;
 
