@@ -31,26 +31,23 @@ public class TheSystem {
 		this.userList = new HashMap<>();
 	}
 
-	public Boolean createNewManager(String username, String email, String password) {
+	public void createNewManager(String username, String email, String password) {
 		try {
 			Manager tempManager = new Manager(username, email, password, this);
 
 			if (addUser(tempManager)) {
 				this.managerList.put(username, tempManager);
-				return true;
-			} else {
-				System.out.println("This username Exist!");
-				return false;
+				return;
 			}
 
 		} catch (InvalidEmailException e) {
 			System.out.println(e.getMessage());
 			// e.printStackTrace();
-			return false;
+			return;
 		} catch (InvalidUserNameException e) {
 			System.out.println(e.getMessage());
 			// e.printStackTrace();
-			return false;
+			return;
 		}
 
 	}
