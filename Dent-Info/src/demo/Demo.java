@@ -19,8 +19,8 @@ public class Demo {
 
 		TheSystem s1 = new TheSystem();
 
-		s1.createNewManager("manager", "Manager1@abv.bg", "Password","8512136427");
-		s1.createNewManager("manager", "Manager1@abv.bg", "Password", "9003145012");
+		s1.createNewManager("manager", "Manager1@abv.bg", "Password");
+		s1.createNewManager("manager", "Manager1@abv.bg", "Password");
 
 		System.out.println("Login: " + s1.logIn("manager", "Passwor"));
 		System.out.println("Login: " + s1.logIn("manage", "Password"));

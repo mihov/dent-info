@@ -38,26 +38,23 @@ public class TheSystem {
 	 * @param email
 	 * @param password
 	 */
-	public void createNewManager(String username, String email, String password,String egn) {
+	public Boolean createNewManager(String username, String email, String password) {
 		try {
-			Manager tempManager = new Manager(username, email, password,this, egn);
+			Manager tempManager = new Manager(username, email, password,this);
 
 			if (addUser(tempManager)) {
 				this.managerList.put(username, tempManager);
-				return;
+				return true;
 			}
 
 		} catch (InvalidEmailException e) {
 			System.out.println(e.getMessage());
-			return;
+			return false;
 		} catch (InvalidUserNameException e1) {
 			System.out.println(e1.getMessage());
-			return;
-		}catch(InvalidEgnException e2){
-			System.out.println(e2.getMessage());
-			return;
+			return false;
 		}
-
+		return false;
 	}
 
 	

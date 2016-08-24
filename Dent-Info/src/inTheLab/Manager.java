@@ -12,8 +12,8 @@ import mainObjects.TheSystem;
 public class Manager extends Person {
 	private TheSystem theSystem;
 
-	public Manager(String username, String email, String password, TheSystem theSystem,String egn)throws InvalidEmailException, InvalidUserNameException, InvalidEgnException {
-		super(username, email, password,egn);
+	public Manager(String username, String email, String password, TheSystem theSystem)throws InvalidEmailException, InvalidUserNameException{
+		super(username, email, password);
 		this.theSystem = theSystem;
 
 	}
@@ -56,8 +56,6 @@ public class Manager extends Person {
 			System.out.println(e1.getMessage());
 		} catch (ThisUserExistException e2) {
 			System.out.println(e2.getMessage());
-		}catch(InvalidEgnException e3){
-			System.out.println(e3.getMessage());
 		}
 		return false;
 	}

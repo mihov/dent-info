@@ -21,8 +21,7 @@ public abstract class Person {
 	private String phone2;
 	private DentalLaboratory currentLab;
 
-	public Person(String username, String email, String password,String egn)throws InvalidEmailException, InvalidUserNameException,InvalidEgnException {
-		this.setEgn(egn);
+	public Person(String username, String email, String password)throws InvalidEmailException, InvalidUserNameException{
 		this.setUsername(username);
 		this.setEmail(email);
 		this.setPassword(password);

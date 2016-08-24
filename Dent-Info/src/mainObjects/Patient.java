@@ -6,8 +6,8 @@ import exceptions.InvalidUserNameException;
 
 public class Patient extends Person {
 
-	public Patient(String username, String email, String password,String egn) throws InvalidEmailException, InvalidUserNameException, InvalidEgnException {
-		super(username, email, password,egn);
+	public Patient(String username, String email, String password) throws InvalidEmailException, InvalidUserNameException{
+		super(username, email, password);
 		// TODO Auto-generated constructor stub
 	}
 
