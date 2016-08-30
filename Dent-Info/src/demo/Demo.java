@@ -1,20 +1,18 @@
 package demo;
 
-import exceptions.InvalidEmailException;
-import exceptions.InvalidUserNameException;
-import inTheLab.DateReason;
 import inTheLab.Manager;
-import inTheLab.Order;
-import inTheLab.Service;
-import inTheLab.ToothPosition;
 import mainObjects.Dentist;
 import mainObjects.Patient;
 import mainObjects.Person;
 import mainObjects.TheSystem;
+import tools.SendMail;
 
 public class Demo {
 
 	public static void main(String[] args) {
+	SendMail.sendMail("tancho.mihov@gmail.com", "<h1>You have account in dent-info.net</h1><h1>Your username: asdfg</h1><h1>Your password: eeeeee</h1> ");
+		
+		
 		System.out.println("Start!");
 
 		TheSystem s1 = new TheSystem();

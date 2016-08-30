@@ -1,0 +1,13 @@
+ÇÀ ÁÀÇÀÒÀ ÄÀÍÍÈ
+
+Your account number is: 168064
+
+Your new database is now ready to use.
+
+To connect to your database use these details
+
+Server: sql7.freemysqlhosting.net
+Name: sql7133613
+Username: sql7133613
+Password: AnggnZlgzp
+Port number: 3306
