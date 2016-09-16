@@ -20,14 +20,12 @@ import model.inTheLab.ManagersManager;
 public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(username);
 		System.out.println(password);
 		System.out.println(email);
 		try {
-			ManagersManager.getInstance().registerManager(username, password, email);
+			ManagersManager.getInstance().registerManager(password, email);
 		} catch (InvalidEmailException e) {
 			System.out.println("Someone added an ivalid email");
 			//TODO add message page when invalid email

@@ -5,8 +5,8 @@ import model.exceptions.InvalidUserNameException;
 
 public class Administrator extends Person {
 
-	public Administrator(String username, String email, String password)throws InvalidEmailException, InvalidUserNameException{
-		super(username, email, password);
+	public Administrator(String email, String password)throws InvalidEmailException, InvalidUserNameException{
+		super(email, password);
 		// TODO Auto-generated constructor stub
 	}
 

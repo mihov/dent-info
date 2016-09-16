@@ -11,7 +11,7 @@ public class Dentist extends Person {
 
 	public Dentist(String username, String email, String password,String egn)
 			throws InvalidEmailException, InvalidUserNameException{
-		super(username, email, password);
+		super(email, password);
 		this.patientlist = new HashMap<>();
 	}
 
@@ -24,11 +24,11 @@ public class Dentist extends Person {
 	 */
 	public Boolean addPatient(Patient patient) {
 		if (patient != null) {
-			if (!this.patientlist.containsKey(patient.getUsername())) {
-				this.patientlist.put(patient.getUsername(), patient);
+			if (!this.patientlist.containsKey(patient.getEmail())) {
+				this.patientlist.put(patient.getEmail(), patient);
 				return true;
 			} else {
-				System.err.println("Patient " + patient.getUsername() + " already exist!");
+				System.err.println("Patient " + patient.getEmail() + " already exist!");
 				return false;
 			}
 		} else {

@@ -5,8 +5,8 @@ import model.exceptions.InvalidUserNameException;
 
 public class Patient extends Person {
 
-	public Patient(String username, String email, String password) throws InvalidEmailException, InvalidUserNameException{
-		super(username, email, password);
+	public Patient(String email, String password) throws InvalidEmailException, InvalidUserNameException{
+		super(email, password);
 		// TODO Auto-generated constructor stub
 	}
 

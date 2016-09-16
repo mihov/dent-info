@@ -16,13 +16,13 @@ import model.inTheLab.ManagersManager;
 public class LogInServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String htmlFile;
-		System.out.println(username);
+		System.out.println(email);
 		System.out.println(password);
 		System.out.println("Someone is trying to log in");
-		if(ManagersManager.getInstance().validLogIn(username, password)){
+		if(ManagersManager.getInstance().validLogIn(email, password)){
 			htmlFile = "manager_lib_create.html";
 		}
 		else{

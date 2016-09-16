@@ -12,7 +12,6 @@ import model.tools.PassMD5;
 import model.tools.PhoneValidator;
 
 public abstract class Person {
-	private String username;
 	private String email;
 	private String password;
 	private String firstName;
@@ -22,9 +21,8 @@ public abstract class Person {
 	private String phone1;
 	private DentalLaboratory currentLab;
 
-	public Person(String username, String email, String password)
+	public Person(String email, String password)
 			throws InvalidEmailException, InvalidUserNameException {
-		this.setUsername(username);
 		this.setEmail(email);
 		this.setPassword(password);
 	}
@@ -37,20 +35,6 @@ public abstract class Person {
 	 */
 	public void setEgn(String egn){
 		this.egn = egn;
-	}
-
-	/**
-	 * Sets the persons username if it has the needed length
-	 * 
-	 * @param username
-	 * @throws InvalidUserNameException
-	 */
-	private void setUsername(String username) throws InvalidUserNameException {
-		if (username.length() >= 1) {
-			this.username = username;
-		} else {
-			throw new InvalidUserNameException(username);
-		}
 	}
 
 	/**
@@ -140,15 +124,6 @@ public abstract class Person {
 	}
 
 	/**
-	 * returns the current persons username
-	 * 
-	 * @return
-	 */
-	public String getUsername() {
-		return username;
-	}
-
-	/**
 	 * Checks if the given password is the same as the persons password
 	 * 
 	 * @param password
@@ -208,8 +183,6 @@ public abstract class Person {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		if (getUsername() != null)
-			builder.append(getUsername()).append("\t|\t");
 		if (getEmail() != null)
 			builder.append(getEmail()).append("\t|\t");
 		if (getEgn() != null)

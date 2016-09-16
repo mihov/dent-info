@@ -7,12 +7,11 @@ import model.exceptions.ThisUserExistException;
 import model.mainObjects.Address;
 import model.mainObjects.Dentist;
 import model.mainObjects.Person;
-import model.mainObjects.TheSystem;
 
 public class Manager extends Person {
 
-	public Manager(String username, String email, String password)throws InvalidEmailException, InvalidUserNameException{
-		super(username, email, password);
+	public Manager(String email, String password)throws InvalidEmailException, InvalidUserNameException{
+		super(email, password);
 	}
 	
 	

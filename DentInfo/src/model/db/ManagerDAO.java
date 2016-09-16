@@ -30,15 +30,17 @@ public class ManagerDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("statement created");
-			ResultSet resultSet = st.executeQuery("SELECT username, password, email, address, first_name, last_name, egn, phone FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone FROM users;");
 			System.out.println("result set created");
 			while(resultSet.next()){
-				Manager m = new Manager(resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("password"));
+				Manager m = new Manager(resultSet.getString("email"),resultSet.getString("password"));
 				m.setAddress(resultSet.getString("address"));
 				m.setFirstName(resultSet.getString("first_name"));
 				m.setLastName(resultSet.getString("last_name"));
 				m.setEgn(resultSet.getString("egn"));
-				m.setPhone(resultSet.getString("phone"));
+				if(resultSet.getString("phone") != null){
+					m.setPhone(resultSet.getString("phone"));
+				}
 				users.add(m);
 			}
 		} catch (SQLException e) {
@@ -50,16 +52,11 @@ public class ManagerDAO {
 	}
 	
 	public void saveUser(Manager manager){
-		System.out.println(manager.getUsername());
-		System.out.println(manager.getPassword());
 		try {
-			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (username, password, email, fk_user_type_id, fk_lab_id, phone) VALUES (?, ?, ?, ?, ?, ?);");
-			st.setString(1, manager.getUsername());
-			st.setString(2, manager.getPassword());
-			st.setString(3, manager.getEmail());
-			st.setInt(4, 1);
-			st.setInt(5, 1);
-			st.setString(6, "");
+			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (password, email, fk_user_type_id) VALUES (?, ?, ?);");
+			st.setString(1, manager.getPassword());
+			st.setString(2, manager.getEmail());
+			st.setInt(3, 1);
 			st.executeUpdate();
 			System.out.println("User added successfully");
 		} catch (SQLException e) {

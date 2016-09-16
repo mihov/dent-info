@@ -75,8 +75,8 @@ public class DentalLaboratory {
 
 	public Boolean setNewManager(Manager manager) {
 		if (manager != null) {
-			if (!this.managerList.containsKey(manager.getUsername())) {
-				this.managerList.put(manager.getUsername(), manager);
+			if (!this.managerList.containsKey(manager.getEmail())) {
+				this.managerList.put(manager.getEmail(), manager);
 				return true;
 			} else {
 				return false; // manager exist
@@ -106,8 +106,8 @@ public class DentalLaboratory {
 
 	public Boolean setNewDentist(Dentist dentist) {
 		if (dentist != null) {
-			if (!this.dentistList.containsKey(dentist.getUsername())) {
-				this.dentistList.put(dentist.getUsername(), dentist);
+			if (!this.dentistList.containsKey(dentist.getEmail())) {
+				this.dentistList.put(dentist.getEmail(), dentist);
 			
 				return true;
 			} else {
