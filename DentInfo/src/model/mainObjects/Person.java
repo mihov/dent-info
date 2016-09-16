@@ -35,12 +35,8 @@ public abstract class Person {
 	 * @param egn
 	 * @throws InvalidEgnException
 	 */
-	private void setEgn(String egn) throws InvalidEgnException {
-		if (new EGNValidator().containsTenDigits(egn)) {
-			this.egn = egn;
-		} else {
-			throw new InvalidEgnException();
-		}
+	public void setEgn(String egn){
+		this.egn = egn;
 	}
 
 	/**

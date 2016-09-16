@@ -12,7 +12,7 @@ import model.mainObjects.TheSystem;
 public class Manager extends Person {
 	private TheSystem theSystem;
 
-	public Manager(String username, String email, String password, TheSystem theSystem)throws InvalidEmailException, InvalidUserNameException{
+	public Manager(String username, String email, String password)throws InvalidEmailException, InvalidUserNameException{
 		super(username, email, password);
 		this.theSystem = theSystem;
 

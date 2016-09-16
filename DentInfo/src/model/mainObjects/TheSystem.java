@@ -40,7 +40,7 @@ public class TheSystem {
 	 */
 	public Boolean createNewManager(String username, String email, String password) {
 		try {
-			Manager tempManager = new Manager(username, email, password,this);
+			Manager tempManager = new Manager(username, email, password);
 
 			if (addUser(tempManager)) {
 				this.managerList.put(username, tempManager);
