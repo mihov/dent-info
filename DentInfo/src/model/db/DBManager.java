@@ -31,19 +31,20 @@ public class DBManager {
 		}
 		try {
 			connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+			System.out.println("connected to db");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	synchronized static DBManager getInstance() {
+	public synchronized static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
 		}
 		return instance;
 	}
 
-	Connection getConnection() {
+	public Connection getConnection() {
 		return connection;
 	}
 }

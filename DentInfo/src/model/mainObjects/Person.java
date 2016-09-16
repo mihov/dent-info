@@ -46,7 +46,7 @@ public abstract class Person {
 	 * @throws InvalidUserNameException
 	 */
 	private void setUsername(String username) throws InvalidUserNameException {
-		if (username.length() > 4) {
+		if (username.length() >= 1) {
 			this.username = username;
 		} else {
 			throw new InvalidUserNameException(username);
@@ -73,7 +73,7 @@ public abstract class Person {
 	 * @param password
 	 */
 	public void setPassword(String password) {
-		this.password = PassMD5.convert(password);
+		this.password = password;
 	}
 
 	/**

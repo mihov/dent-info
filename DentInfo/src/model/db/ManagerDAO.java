@@ -29,7 +29,9 @@ public class ManagerDAO {
 		Set<Manager> users = new HashSet<Manager>();
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
-			ResultSet resultSet = st.executeQuery("SELECT username, name, password, email, address, first_name, last_name, egn, phone FROM users;");
+			System.out.println("statement created");
+			ResultSet resultSet = st.executeQuery("SELECT username, password, email, address, first_name, last_name, egn, phone FROM users;");
+			System.out.println("result set created");
 			while(resultSet.next()){
 				Manager m = new Manager(resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("password"));
 				m.setAddress(resultSet.getString("address"));
@@ -47,12 +49,17 @@ public class ManagerDAO {
 		return users;
 	}
 	
-	public void saveUser(Manager user){
+	public void saveUser(Manager manager){
+		System.out.println(manager.getUsername());
+		System.out.println(manager.getPassword());
 		try {
-			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (username, password, email) VALUES (?, ?, ?, ?, ?, ?);");
-			st.setString(1, user.getUsername());
-			st.setString(4, user.getPassword());
-			st.setString(5, user.getEmail());
+			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (username, password, email, fk_user_type_id, fk_lab_id, phone) VALUES (?, ?, ?, ?, ?, ?);");
+			st.setString(1, manager.getUsername());
+			st.setString(2, manager.getPassword());
+			st.setString(3, manager.getEmail());
+			st.setInt(4, 1);
+			st.setInt(5, 1);
+			st.setString(6, "");
 			st.executeUpdate();
 			System.out.println("User added successfully");
 		} catch (SQLException e) {
