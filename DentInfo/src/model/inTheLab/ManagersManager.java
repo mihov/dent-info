@@ -6,7 +6,8 @@ import model.db.ManagerDAO;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
 
-public class ManagersManager {
+public class ManagersManager extends MasterManager{
+	
 	
 	private ConcurrentHashMap<String, Manager> registerredManagers;
 	
@@ -44,10 +45,15 @@ public class ManagersManager {
 	}
 	
 	public void registerManager(String password,String email) throws InvalidEmailException, InvalidUserNameException{
-		Manager m = new Manager(email, password);
+		Manager m = new Manager(email, password,MasterManager.getNextUserId());
 		System.out.println("manager made");
 		ManagerDAO.getInstance().saveUser(m);
 		registerredManagers.put(email, m);
+	}
+	
+	public Manager getManager(String email){
+		Manager m = registerredManagers.get(email);
+		return m;
 	}
 
 }

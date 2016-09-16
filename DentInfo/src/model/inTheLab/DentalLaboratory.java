@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import model.exceptions.InvalidUserNameException;
-import model.mainObjects.Address;
 import model.mainObjects.Dentist;
 import model.mainObjects.Patient;
 
 public class DentalLaboratory {
 	private String bulstat;
 	private String name;
-	private Address address;
+	private String address;
 	private Manager manager;
+	private String website;
 	private HashMap<String, Manager> managerList;
 	private HashMap<String, Dentist> dentistList;
 	private HashMap<String, Service> serviceList;
@@ -26,16 +26,25 @@ public class DentalLaboratory {
 	 * @param address
 	 * @throws InvalidUserNameException 
 	 */
-	DentalLaboratory(String bulstat, String name, Address address, Manager manager) throws InvalidUserNameException {
+	public DentalLaboratory(String bulstat, String name,String address, Manager manager,String website) throws InvalidUserNameException {
 		this.setBulstat(bulstat);
 		this.setName(name);
 		this.setAddress(address);
 		this.setManager(manager);
+		this.setWebsite(website);
 		this.managerList = new HashMap<>();
 		this.dentistList = new HashMap<>();
 		this.serviceList = new HashMap<>();
 		this.orderList = new HashMap<>();
 		this.ordersById = new HashMap<>();
+	}
+	
+	public void setWebsite(String wbsite){
+		this.website = website;
+	}
+	
+	public String getWebsite(){
+		return this.website;
 	}
 
 	public String getBulstat() {
@@ -58,11 +67,11 @@ public class DentalLaboratory {
 		}
 	}
 
-	public Address getAddress() {
+	public String getAddress() {
 		return this.address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(String address) {
 		if (address != null) {
 			this.address = address;
 		} else {

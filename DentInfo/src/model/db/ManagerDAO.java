@@ -30,10 +30,10 @@ public class ManagerDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("statement created");
-			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone, user_id FROM users;");
 			System.out.println("result set created");
 			while(resultSet.next()){
-				Manager m = new Manager(resultSet.getString("email"),resultSet.getString("password"));
+				Manager m = new Manager(resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("user_id"));
 				m.setAddress(resultSet.getString("address"));
 				m.setFirstName(resultSet.getString("first_name"));
 				m.setLastName(resultSet.getString("last_name"));
@@ -47,7 +47,7 @@ public class ManagerDAO {
 			System.out.println("Oops, cannot make statement.");
 			return users;
 		}
-		System.out.println("Users loaded successfully");
+		System.out.println("Managers loaded successfully");
 		return users;
 	}
 	

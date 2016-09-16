@@ -12,6 +12,8 @@ import model.tools.PassMD5;
 import model.tools.PhoneValidator;
 
 public abstract class Person {
+	
+	private int user_id;
 	private String email;
 	private String password;
 	private String firstName;
@@ -21,10 +23,14 @@ public abstract class Person {
 	private String phone1;
 	private DentalLaboratory currentLab;
 
-	public Person(String email, String password)
+	public Person(String email, String password,int user_id)
 			throws InvalidEmailException, InvalidUserNameException {
 		this.setEmail(email);
 		this.setPassword(password);
+	}
+	
+	public int getUser_id() {
+		return user_id;
 	}
 
 	/**

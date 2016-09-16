@@ -4,14 +4,13 @@ import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
 import model.exceptions.ThisUserExistException;
-import model.mainObjects.Address;
 import model.mainObjects.Dentist;
 import model.mainObjects.Person;
 
 public class Manager extends Person {
 
-	public Manager(String email, String password)throws InvalidEmailException, InvalidUserNameException{
-		super(email, password);
+	public Manager(String email, String password,int user_id)throws InvalidEmailException, InvalidUserNameException{
+		super(email, password, user_id);
 	}
 	
 	
