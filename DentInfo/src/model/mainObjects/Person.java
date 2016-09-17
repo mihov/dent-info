@@ -1,16 +1,23 @@
 package model.mainObjects;
 
+import model.exceptions.EmptyNameException;
 import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidPhoneException;
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
+import model.tools.EGNValidator;
 import model.tools.EmailValidator;
 import model.tools.PassMD5;
 import model.tools.PhoneValidator;
 
 public abstract class Person {
-	
+
+	/*
+	 * user_id password fk_user_type_id fk_dentist_id email address phone egn
+	 * first_name last_name lab_id
+	 */
+
 	private int user_id;
 	private String email;
 	private String password;
@@ -18,21 +25,38 @@ public abstract class Person {
 	private String lastName;
 	private String egn;
 	private String address;
-	private String phone1;
-	private int labId;
+	private String phone;
+	private Integer fk_user_type_id;
+	private Integer fk_dentist_id;
+	private Integer lab_id;
+
 	private DentalLaboratory currentLab;
 
-	public Person(String email, String password,int user_id)
-			throws InvalidEmailException, InvalidUserNameException {
+	public Person(String email, String password, int user_id) throws InvalidEmailException, InvalidUserNameException {
 		this.setEmail(email);
 		this.setPassword(password);
-		this.user_id = user_id;
 	}
-	
+
+	public Person(int user_id, String email, String password, String firstName, String lastName, String egn,
+			String address, String phone, Integer fk_user_type_id, Integer fk_dentist_id, Integer lab_id) {
+		this.user_id = user_id;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.egn = egn;
+		this.address = address;
+		this.phone = phone;
+		this.fk_user_type_id = fk_user_type_id;
+		this.fk_dentist_id = fk_dentist_id;
+		this.lab_id = lab_id;
+		this.currentLab = currentLab;
+	}
+
 	public void setUserId(int user_id) {
 		this.user_id = user_id;
 	}
-	
+
 	public int getUser_id() {
 		return user_id;
 	}
@@ -43,7 +67,7 @@ public abstract class Person {
 	 * @param egn
 	 * @throws InvalidEgnException
 	 */
-	public void setEgn(String egn){
+	public void setEgn(String egn) {
 		this.egn = egn;
 	}
 
@@ -85,8 +109,8 @@ public abstract class Person {
 	 * @return the phone1
 	 */
 	public String getPhone() {
-		if (this.phone1 != null) {
-			return phone1;
+		if (this.phone != null) {
+			return phone;
 		} else {
 			System.out.println("There is no given phone number!");
 			return null;
@@ -100,12 +124,12 @@ public abstract class Person {
 	 */
 	public void setPhone(String phone) {
 		if (new PhoneValidator().validate(phone)) {
-			this.phone1 = phone;
+			this.phone = phone;
 		} else {
 			try {
 				throw new InvalidPhoneException(phone);
 			} catch (InvalidPhoneException e) {
-				this.phone1 = null;
+				this.phone = null;
 				e.getMessage();
 			}
 		}
@@ -142,8 +166,8 @@ public abstract class Person {
 	public boolean comparePassword(String password) {
 		return this.password.equals(PassMD5.convert(password));
 	}
-	
-		public String getPassword() {
+
+	public String getPassword() {
 		return this.password;
 	}
 
@@ -225,4 +249,17 @@ public abstract class Person {
 		}
 		this.currentLab = currentLab;
 	}
+
+	public Integer getFk_user_type_id() {
+		return fk_user_type_id;
+	}
+
+	public Integer getFk_dentist_id() {
+		return fk_dentist_id;
+	}
+
+	public Integer getLab_id() {
+		return lab_id;
+	}
+
 }

@@ -1,16 +1,27 @@
 package model.inTheLab;
 
+import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.exceptions.ThisUserExistException;
+import model.mainObjects.Dentist;
 import model.mainObjects.Person;
 
 public class Manager extends Person {
-	
+
 	public Manager(String email, String password,int user_id)throws InvalidEmailException, InvalidUserNameException{
 		super(email, password, user_id);
 	}
 	
 	
+	public Manager(int user_id, String email, String password, String firstName, String lastName, String egn,
+			String address, String phone, Integer fk_user_type_id, Integer fk_dentist_id, Integer lab_id) {
+		super( user_id,  email,  password,  firstName,  lastName,  egn,
+				 address,  phone,  fk_user_type_id,  fk_dentist_id,  lab_id);
+		System.out.println("Manager created!!!");
+	}
+
+
 	public Boolean createLab(String bulstat, String name) {
 //		if (this.getCurrentLab() == null) {
 //			if (!this.theSystem.doesThisLabExist(bulstat)) {
@@ -75,12 +86,4 @@ public class Manager extends Person {
 	public void changeManagerData(){
 		//TODO changing the managers personal data 
 	}
-
-
-	@Override
-	public String toString() {
-		return "Manager [getUser_id()=" + getUser_id() + ", getEmail()=" + getEmail() + ",getPassword()=" + getPassword() + "]";
-	}
-	
-	
 }
