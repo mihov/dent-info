@@ -1,6 +1,8 @@
 package model.controler;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.inTheLab.LaboratoryManager;
+import model.inTheLab.Manager;
+import model.inTheLab.ManagersManager;
 
 @WebServlet("/RegisterLabServlet")
 public class RegisterLabServlet extends HttpServlet {
@@ -23,8 +27,11 @@ public class RegisterLabServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String password2 = request.getParameter("password2");
 		HttpSession ses = request.getSession();
-//		LaboratoryManager lab = LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager, website);
-		
+		String user = (String) request.getSession().getAttribute("logedAs");
+		Manager manager = ManagersManager.getInstance().getManager(user);
+		LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager, website);
+		RequestDispatcher rd = request.getRequestDispatcher("manager_lib_create.html");//TODO kade shte izvejda pri registraciq na laboratoriq
+		rd.forward(request, response);
 	}
 
 }
