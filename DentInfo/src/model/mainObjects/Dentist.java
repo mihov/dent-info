@@ -8,8 +8,8 @@ import model.exceptions.InvalidUserNameException;
 public class Dentist extends Person {
 	private HashMap<String, Patient> patientlist;
 	private String bulstat;
-
-	public Dentist(String username, String email, String password,String egn,int user_id)
+	
+	public Dentist(String email, String password,int user_id)
 			throws InvalidEmailException, InvalidUserNameException{
 		super(email, password,user_id);
 		this.patientlist = new HashMap<>();

@@ -36,6 +36,7 @@ public abstract class Person {
 		this.setEmail(email);
 		this.setPassword(password);
 		this.setUserId(user_id);
+		this.user_id = user_id;
 	}
 
 	public Person(int user_id, String email, String password, String firstName, String lastName, String egn,

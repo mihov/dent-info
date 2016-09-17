@@ -18,10 +18,10 @@ public class RegisterDentistServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("email");
-		String name = request.getParameter("name");
-		String family = request.getParameter("family");
+		String email = request.getParameter("dentist_email");
+		String password = request.getParameter("dentist_email");
+		String name = request.getParameter("dentist_first_name");
+		String family = request.getParameter("dentist_last_name");
 		System.out.println(password);
 		System.out.println(email);
 		try {

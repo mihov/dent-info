@@ -4,13 +4,15 @@
 <html>
 <%
 	String username = (String) request.getSession().getAttribute("logged");
-	Integer labId = (request.getSession().getAttribute("lab") == null) ? 0
-			: (Integer) request.getSession().getAttribute("lab");
 	RequestDispatcher rd = null;
 	if (username == null) {
 		rd = request.getRequestDispatcher("login.html");
+		rd.forward(request, response);
 	}
-	rd.forward(request, response);
+	if (request.getSession().getAttribute("lab") != null) {
+		rd = request.getRequestDispatcher("manager_main.jsp");
+		rd.forward(request, response);
+	}
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
