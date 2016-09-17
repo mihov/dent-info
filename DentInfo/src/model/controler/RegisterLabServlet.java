@@ -28,7 +28,9 @@ public class RegisterLabServlet extends HttpServlet {
 		String password2 = request.getParameter("password2");
 		HttpSession ses = request.getSession();
 		String user = (String) request.getSession().getAttribute("logedAs");
+		System.out.println(user);
 		Manager manager = ManagersManager.getInstance().getManager(user);
+		manager.getPassword();
 		LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager, website);
 		RequestDispatcher rd = request.getRequestDispatcher("manager_lib_create.html");//TODO kade shte izvejda pri registraciq na laboratoriq
 		rd.forward(request, response);

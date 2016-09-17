@@ -55,10 +55,10 @@ public class LabDAO {
 		try {
 			PreparedStatement ps = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO laboratories (name,bulstat,fk_manager_id,address) VALUES (?,?,?,?); ");
 			ps.setString(1, dentLab.getName());
-			ps.setString(1, dentLab.getBulstat());
+			ps.setString(2, dentLab.getBulstat());
 			ps.setInt(3, dentLab.getManager().getUser_id());
 			ps.setString(4, dentLab.getAddress());
-			ps.executeQuery();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
