@@ -22,8 +22,10 @@ public class LogInServlet extends HttpServlet {
 		System.out.println(email);
 		System.out.println(password);
 		System.out.println("Someone is trying to log in");
+		
 		if(ManagersManager.getInstance().validLogIn(email, password)){
-			request.getSession().setAttribute("logedAs", email);
+			request.getSession().setAttribute("logged", email);
+			System.out.println(request.getSession());
 			htmlFile = "manager_lib_create.html";
 		}
 		else{

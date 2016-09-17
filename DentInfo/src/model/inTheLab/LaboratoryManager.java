@@ -6,7 +6,7 @@ import model.db.LabDAO;
 import model.exceptions.InvalidUserNameException;
 
 
-public class LaboratoryManager extends MasterManager{
+public class LaboratoryManager {
 	
 	private ConcurrentHashMap<String, DentalLaboratory> registerredLaboratories;
 	

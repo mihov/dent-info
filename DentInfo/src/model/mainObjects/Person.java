@@ -29,6 +29,10 @@ public abstract class Person {
 		this.setPassword(password);
 	}
 	
+	public void setUserId(int user_id) {
+		this.user_id = user_id;
+	}
+	
 	public int getUser_id() {
 		return user_id;
 	}

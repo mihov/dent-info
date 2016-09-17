@@ -58,6 +58,10 @@ public class ManagerDAO {
 			st.setString(2, manager.getEmail());
 			st.setInt(3, 1);
 			st.executeUpdate();
+			PreparedStatement prep =DBManager.getInstance().getConnection().prepareStatement("SELECT user_id FROM users WHERE email LIKE (?);");
+			prep.setString(1, manager.getEmail());
+			ResultSet rs = prep.executeQuery();
+			manager.setUserId(rs.getInt("user_id"));
 			System.out.println("User added successfully");
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the user");
