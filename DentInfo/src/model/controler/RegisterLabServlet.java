@@ -19,17 +19,13 @@ public class RegisterLabServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String email2 = request.getParameter("confirm_email");
 		String bulstat = request.getParameter("bulstat");
 		String website = request.getParameter("website");
 		String address = request.getParameter("occupation");
-		String password = request.getParameter("password");
-		String password2 = request.getParameter("password2");
-		HttpSession ses = request.getSession();
 		System.out.println(request.getSession());
-		String user = (String) request.getSession().getAttribute("loged");
+		String user = (String) request.getSession().getAttribute("logged");
 		System.out.println(user);
+		System.out.println("-----------------------------------------------------------");
 		Manager manager = ManagersManager.getInstance().getManager(user);
 		System.out.println(manager.getEmail());
 		manager.getPassword();
