@@ -13,7 +13,6 @@ public class DentalLaboratory {
 	private String name;
 	private String address;
 	private Manager manager;
-	private String website;
 	private HashMap<String, Manager> managerList;
 	private HashMap<String, Dentist> dentistList;
 	private HashMap<String, Service> serviceList;
@@ -27,13 +26,12 @@ public class DentalLaboratory {
 	 * @param address
 	 * @throws InvalidUserNameException 
 	 */
-	public DentalLaboratory(String bulstat, String name,String address, Manager manager,String website,int labId) throws InvalidUserNameException {
+	public DentalLaboratory(String bulstat, String name,String address, Manager manager,int labId) throws InvalidUserNameException {
 		this.setBulstat(bulstat);
 		this.setName(name);
 		this.setAddress(address);
 		this.setManager(manager);
-		this.setWebsite(website);
-		this.setLabId(labId);
+		this.labId = labId;
 		this.managerList = new HashMap<>();
 		this.dentistList = new HashMap<>();
 		this.serviceList = new HashMap<>();
@@ -45,16 +43,9 @@ public class DentalLaboratory {
 		return labId;
 	}
 	
-	public void setLabId(int lab){
-		this.labId = lab;
-	}
-	
-	public void setWebsite(String wbsite){
-		this.website = wbsite;
-	}
-	
-	public String getWebsite(){
-		return this.website;
+	public void setLabId(int labId){
+		System.out.println("Setting lab id to: "+ labId);
+		this.labId = labId;
 	}
 
 	public String getBulstat() {

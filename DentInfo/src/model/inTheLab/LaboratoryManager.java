@@ -31,12 +31,12 @@ public class LaboratoryManager {
 		return labMan;
 	}
 	
-	public void registerLab(String bulstat,String name,String address,Manager manager,String website){
+	public void registerLab(String bulstat,String name,String address,Manager manager){
 		try {
-			DentalLaboratory dl = new DentalLaboratory(bulstat, name, address, manager,website,0);
+			DentalLaboratory dl = new DentalLaboratory(bulstat, name, address, manager,0);
 			System.out.println("Lab created");
-			manager.setCurrentLab(dl);
 			LabDAO.getInstance().createLab(dl);
+			manager.setCurrentLab(dl);
 			registerredLaboratories.put(dl.getBulstat(), dl);
 		} catch (InvalidUserNameException e) {
 			// TODO Auto-generated catch block

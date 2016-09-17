@@ -30,12 +30,12 @@ public class LabDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("Statement made");
-			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.website, l.lab_id, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
+			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.lab_id, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
 			System.out.println("result set created");
 			while(rs.next()){
 				ManagersManager managers = ManagersManager.getInstance();
 				Manager m = managers.getManager(rs.getString("email"));
-				DentalLaboratory laboratory = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getString("website"), rs.getInt("lab_id"));
+				DentalLaboratory laboratory = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getInt("lab_id"));
 				labs.add(laboratory);
 			}
 		} catch (SQLException e) {
