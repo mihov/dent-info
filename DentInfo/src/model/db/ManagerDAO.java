@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -50,6 +51,7 @@ public class ManagerDAO {
 			return users;
 		}
 		System.out.println("Managers loaded successfully");
+		DBManager.getInstance().closeConnection();
 		return users;
 	}
 	

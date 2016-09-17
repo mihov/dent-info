@@ -27,6 +27,7 @@ public abstract class Person {
 			throws InvalidEmailException, InvalidUserNameException {
 		this.setEmail(email);
 		this.setPassword(password);
+		this.user_id = user_id;
 	}
 	
 	public void setUserId(int user_id) {

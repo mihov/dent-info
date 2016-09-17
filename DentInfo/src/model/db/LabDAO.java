@@ -47,6 +47,7 @@ public class LabDAO {
 			e.printStackTrace();
 		}
 		System.out.println("labs loaded successfully");
+		DBManager.getInstance().closeConnection();
 		return labs;
 	}
 	

@@ -45,6 +45,23 @@ public class DBManager {
 	}
 
 	public Connection getConnection() {
+		if(connection == null){
+			try {
+				return connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return connection;
+	}
+	
+	public void closeConnection(){
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

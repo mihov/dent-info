@@ -78,4 +78,12 @@ public class Manager extends Person {
 	public void changeManagerData(){
 		//TODO changing the managers personal data 
 	}
+
+
+	@Override
+	public String toString() {
+		return "Manager [getUser_id()=" + getUser_id() + ", getEmail()=" + getEmail() + ",getPassword()=" + getPassword() + "]";
+	}
+	
+	
 }
