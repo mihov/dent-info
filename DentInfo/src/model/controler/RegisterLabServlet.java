@@ -29,7 +29,7 @@ public class RegisterLabServlet extends HttpServlet {
 		System.out.println(manager.getEmail());
 		manager.getPassword();
 		LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager);
-		RequestDispatcher rd = request.getRequestDispatcher("manager_lib_create.html");//TODO kade shte izvejda pri registraciq na laboratoriq
+		RequestDispatcher rd = request.getRequestDispatcher("manager_main.jsp");//TODO kade shte izvejda pri registraciq na laboratoriq
 		rd.forward(request, response);
 	}
 

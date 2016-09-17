@@ -19,20 +19,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String email2 = request.getParameter("confirm_email");
-		String bulstat = request.getParameter("bulstat");
-		String website = request.getParameter("website");
-		String address = request.getParameter("occupation");
-
+<h1>Register a new laboratory</h1>
 	<form action="RegisterLabServlet" method="post">
-		Laboratory name:<br> <input type="text" name="name" required>
-		Email:<br> <input type="email" name="email" required> 
-		Bulstat:<br> <input type="text" name="bulstat" required>
-		Website:<br> <input type="text" name="website">
-		Address:<br> <input type="text" name="occupation">
+		Laboratory name:<input type="text" name="name" required><br>
+		Email:<input type="email" name="email" required> <br>
+		Bulstat:<input type="text" name="bulstat" required><br>
+		Address:<input type="text" name="occupation"><br>
 		<input 	type="submit" value="Submit">
 	</form>
 </body>
