@@ -1,5 +1,9 @@
 package model.mainObjects;
 
+import java.sql.Statement;
+
+import model.db.DBManager;
+import model.db.ManagerDAO;
 import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidPhoneException;
@@ -224,5 +228,6 @@ public abstract class Person {
 			return;
 		}
 		this.currentLab = currentLab;
+		ManagerDAO.getInstance().setLab(currentLab, this);
 	}
 }

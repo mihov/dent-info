@@ -45,13 +45,18 @@ public class DBManager {
 	}
 
 	public Connection getConnection() {
-		if(connection == null){
-			try {
-				return connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			if(connection.isClosed()){
+				try {
+					return connection = DriverManager.getConnection(URL, DB_USERNAME, DB_PASSWORD);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+		} catch (SQLException e) {
+			System.out.println("Something with the db happened !!!!!");
+			e.printStackTrace();
 		}
 		return connection;
 	}

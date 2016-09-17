@@ -25,11 +25,10 @@ public class RegisterLabServlet extends HttpServlet {
 		System.out.println(request.getSession());
 		String user = (String) request.getSession().getAttribute("logged");
 		System.out.println(user);
-		System.out.println("-----------------------------------------------------------");
 		Manager manager = ManagersManager.getInstance().getManager(user);
 		System.out.println(manager.getEmail());
 		manager.getPassword();
-		LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager, website);
+		LaboratoryManager.getInstatnce().registerLab(bulstat, name, address, manager);
 		RequestDispatcher rd = request.getRequestDispatcher("manager_lib_create.html");//TODO kade shte izvejda pri registraciq na laboratoriq
 		rd.forward(request, response);
 	}
