@@ -34,7 +34,9 @@ public class ManagerDAO {
 			System.out.println("result set created");
 			while(resultSet.next()){
 				Manager m = new Manager(resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("user_id"));
-				m.setAddress(resultSet.getString("address"));
+				if(resultSet.getString("address") != null){
+					m.setAddress(resultSet.getString("address"));
+				}
 				m.setFirstName(resultSet.getString("first_name"));
 				m.setLastName(resultSet.getString("last_name"));
 				m.setEgn(resultSet.getString("egn"));
@@ -58,15 +60,18 @@ public class ManagerDAO {
 			st.setString(2, manager.getEmail());
 			st.setInt(3, 1);
 			st.executeUpdate();
-			PreparedStatement prep =DBManager.getInstance().getConnection().prepareStatement("SELECT user_id FROM users WHERE email LIKE (?);");
-			prep.setString(1, manager.getEmail());
-			ResultSet rs = prep.executeQuery();
-			manager.setUserId(rs.getInt("user_id"));
+			System.out.println("inserted manager in db");
+			System.out.println(manager.getEmail());
+			ResultSet rs = st.getGeneratedKeys();
+			if(rs.next())
+            {
+                int last_inserted_id = rs.getInt(1);
+                manager.setUserId(last_inserted_id);
+            }
 			System.out.println("User added successfully");
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the user");
 			e.printStackTrace();
 		}
-		
 	}
 }

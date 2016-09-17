@@ -25,6 +25,8 @@ public class LogInServlet extends HttpServlet {
 		
 		if(ManagersManager.getInstance().validLogIn(email, password)){
 			request.getSession().setAttribute("logged", email);
+			request.getSession().setAttribute("firstName", ManagersManager.getInstance().getManager(email).getFirstName());
+			request.getSession().setAttribute("lastName", ManagersManager.getInstance().getManager(email).getLastName());
 			System.out.println(request.getSession());
 			htmlFile = "manager_lib_create.html";
 		}
