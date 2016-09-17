@@ -135,3 +135,6 @@ local.properties
 
 # Code Recommenders
 #.recommenders/
+*.project
+*.jsdtscope
+DentInfo/.settings/org.eclipse.jdt.core.prefs
