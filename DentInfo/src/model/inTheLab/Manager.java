@@ -8,7 +8,7 @@ import model.mainObjects.Dentist;
 import model.mainObjects.Person;
 
 public class Manager extends Person {
-
+	
 	public Manager(String email, String password,int user_id)throws InvalidEmailException, InvalidUserNameException{
 		super(email, password, user_id);
 	}

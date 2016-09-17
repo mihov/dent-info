@@ -33,8 +33,9 @@ public class LaboratoryManager {
 	
 	public void registerLab(String bulstat,String name,String address,Manager manager,String website){
 		try {
-			DentalLaboratory dl = new DentalLaboratory(bulstat, name, address, manager,website);
+			DentalLaboratory dl = new DentalLaboratory(bulstat, name, address, manager,website,0);
 			System.out.println("Lab created");
+			manager.setCurrentLab(dl);
 			LabDAO.getInstance().createLab(dl);
 			registerredLaboratories.put(dl.getBulstat(), dl);
 		} catch (InvalidUserNameException e) {

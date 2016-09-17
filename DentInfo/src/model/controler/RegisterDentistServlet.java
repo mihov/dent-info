@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.ManagersManager;
+import model.mainObjects.DentistManager;
 
 @WebServlet("/RegisterDentistServlet")
 public class RegisterDentistServlet extends HttpServlet {
@@ -25,7 +26,7 @@ public class RegisterDentistServlet extends HttpServlet {
 		System.out.println(password);
 		System.out.println(email);
 		try {
-			ManagersManager.getInstance().registerManager(password, email);
+			DentistManager.getInstance().registerDentist(password, email);
 		} catch (InvalidEmailException e) {
 			System.out.println("Someone added an ivalid email");
 			//TODO add message page when invalid email
@@ -33,7 +34,7 @@ public class RegisterDentistServlet extends HttpServlet {
 			System.out.println("Someone added an ivalid username");
 			//TODO add message page when invalid username
 		}
-		System.out.println("Manager registered successfully");
+		System.out.println("Dentist registered successfully");
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}

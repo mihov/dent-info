@@ -8,6 +8,7 @@ import model.mainObjects.Dentist;
 import model.mainObjects.Patient;
 
 public class DentalLaboratory {
+	private int labId;
 	private String bulstat;
 	private String name;
 	private String address;
@@ -26,17 +27,26 @@ public class DentalLaboratory {
 	 * @param address
 	 * @throws InvalidUserNameException 
 	 */
-	public DentalLaboratory(String bulstat, String name,String address, Manager manager,String website) throws InvalidUserNameException {
+	public DentalLaboratory(String bulstat, String name,String address, Manager manager,String website,int labId) throws InvalidUserNameException {
 		this.setBulstat(bulstat);
 		this.setName(name);
 		this.setAddress(address);
 		this.setManager(manager);
 		this.setWebsite(website);
+		this.setLabId(labId);
 		this.managerList = new HashMap<>();
 		this.dentistList = new HashMap<>();
 		this.serviceList = new HashMap<>();
 		this.orderList = new HashMap<>();
 		this.ordersById = new HashMap<>();
+	}
+	
+	public int getLabID(){
+		return labId;
+	}
+	
+	public void setLabId(int lab){
+		this.labId = labId;
 	}
 	
 	public void setWebsite(String wbsite){

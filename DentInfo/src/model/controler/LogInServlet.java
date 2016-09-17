@@ -28,6 +28,7 @@ public class LogInServlet extends HttpServlet {
 			request.getSession().setAttribute("firstName", ManagersManager.getInstance().getManager(email).getFirstName());
 			request.getSession().setAttribute("lastName", ManagersManager.getInstance().getManager(email).getLastName());
 			request.getSession().setAttribute("userId", ManagersManager.getInstance().getManager(email).getUser_id());
+			request.getSession().setAttribute("lab", ManagersManager.getInstance().getManager(email).getCurrentLab().getLabID());
 			System.out.println(ManagersManager.getInstance().getManager(email).getUser_id());
 			System.out.println(request.getSession());
 			htmlFile = "manager_lib_create.jsp";

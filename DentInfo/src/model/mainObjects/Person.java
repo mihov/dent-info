@@ -21,6 +21,7 @@ public abstract class Person {
 	private String egn;
 	private String address;
 	private String phone1;
+	private int labId;
 	private DentalLaboratory currentLab;
 
 	public Person(String email, String password,int user_id)

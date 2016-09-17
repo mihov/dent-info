@@ -34,16 +34,16 @@ public class LabDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("Statement made");
-			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.website, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
+			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.website, l.lab_id, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
 			System.out.println("result set created");
 			while(rs.next()){
 				ManagersManager managers = ManagersManager.getInstance();
 				Manager m = managers.getManager(rs.getString("email"));
-				DentalLaboratory lab = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getString("website"));
+				DentalLaboratory lab = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getString("website"), rs.getInt("lab_id"));
 				labs.add(lab);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error getting the labs!");
 			e.printStackTrace();
 		}
 		System.out.println("labs loaded successfully");
@@ -59,9 +59,15 @@ public class LabDAO {
 			ps.setString(2, dentLab.getBulstat());
 			ps.setInt(3, dentLab.getManager().getUser_id());
 			ps.setString(4, dentLab.getAddress());
-			ps.executeUpdate();
+			ps.executeUpdate();			
+			ResultSet rs = ps.getGeneratedKeys();
+			if(rs.next())
+            {
+                int last_inserted_id = rs.getInt(1);
+                dentLab.setLabId(last_inserted_id);
+            }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error creating the lab!");
 			e.printStackTrace();
 		}
 		

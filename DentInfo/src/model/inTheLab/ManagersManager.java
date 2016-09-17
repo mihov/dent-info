@@ -37,7 +37,7 @@ public class ManagersManager {
 	public boolean validLogIn(String username,String password){
 		if(registerredManagers.containsKey(username)){
 			System.out.println("manager found");
-			System.out.println("Hello" + registerredManagers.get(username).getEmail());
+			System.out.println("Hello " + registerredManagers.get(username).getEmail());
 			return registerredManagers.get(username).getPassword().equals(password);
 		}
 		System.out.println("could not find manager");
