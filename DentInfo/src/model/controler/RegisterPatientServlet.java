@@ -11,13 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
-import model.inTheLab.ManagersManager;
+import model.mainObjects.PatientManager;
 
-/**
- * Servlet implementation class RegisterServlet
- */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/RegisterPersonServlet")
+public class RegisterPatientServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
@@ -25,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println(password);
 		System.out.println(email);
 		try {
-			ManagersManager.getInstance().registerManager(password, email);
+			PatientManager.getInstance().registerPatient(password, email);
 		} catch (InvalidEmailException e) {
 			System.out.println("Someone added an ivalid email");
 			//TODO add message page when invalid email

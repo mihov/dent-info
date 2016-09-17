@@ -25,11 +25,11 @@ public class ManagerDAO {
 	}
 	
 	public Set<Manager> getAllManagers() throws InvalidEmailException, InvalidUserNameException{
-		Set<Manager> users = new HashSet<Manager>();
+		Set<Manager> managers = new HashSet<Manager>();
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("statement created");
-			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone, user_id FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone, user_id FROM users WHERE fk_user_type_id LIKE (1);");
 			System.out.println("result set created");
 			while(resultSet.next()){
 				Manager m = new Manager(resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("user_id"));
@@ -42,15 +42,15 @@ public class ManagerDAO {
 				if(resultSet.getString("phone") != null){
 					m.setPhone(resultSet.getString("phone"));
 				}
-				users.add(m);
+				managers.add(m);
 			}
 		} catch (SQLException e) {
 			System.out.println("Oops, cannot make statement.");
-			return users;
+			return managers;
 		}
 		System.out.println("Managers loaded successfully");
 		DBManager.getInstance().closeConnection();
-		return users;
+		return managers;
 	}
 	
 	public void saveUser(Manager manager){
