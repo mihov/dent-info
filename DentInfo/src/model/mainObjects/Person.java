@@ -35,6 +35,7 @@ public abstract class Person {
 	public Person(String email, String password, int user_id) throws InvalidEmailException, InvalidUserNameException {
 		this.setEmail(email);
 		this.setPassword(password);
+		this.setUserId(user_id);
 	}
 
 	public Person(int user_id, String email, String password, String firstName, String lastName, String egn,
@@ -50,7 +51,6 @@ public abstract class Person {
 		this.fk_user_type_id = fk_user_type_id;
 		this.fk_dentist_id = fk_dentist_id;
 		this.lab_id = lab_id;
-		this.currentLab = currentLab;
 	}
 
 	public void setUserId(int user_id) {

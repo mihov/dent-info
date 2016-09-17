@@ -16,10 +16,8 @@
 </head>
 <body>
 	<h1>
-		Hello D-r
-		<%=((Person) session.getAttribute("user")).getFirstName()%>
-		<%=((Person) session.getAttribute("user")).getLastName()%>
-	</h1>
+		Hello D-r <%=((Dentist) session.getAttribute("user")).getEmail()%>
+		</h1>
 	<a href="dentist_create_patient.jsp">Create new patient</a>
 	<br>
 	<a href="dentist_create_order.jsp">Create new order</a>

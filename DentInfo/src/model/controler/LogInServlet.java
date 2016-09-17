@@ -27,9 +27,9 @@ public class LogInServlet extends HttpServlet {
 		System.out.println("Someone is trying to log in");
 
 		if (UserManager.getInstance().validLogIn(email, password)) {
-			//request.getSession().setAttribute("user", UserManager.getInstance().getUser(email));
-			System.out.println(UserManager.getInstance().getUser(email));
-			//request.getSession().setAttribute("logged", email);
+			request.getSession().setAttribute("user", UserManager.getInstance().getUser(email));
+			//System.out.println(UserManager.getInstance().getUser(email));
+			request.getSession().setAttribute("logged", email);
 			// request.getSession().setAttribute("user", email);
 			// request.getSession().setAttribute("firstName",
 			// ManagersManager.getInstance().getManager(email).getFirstName());
