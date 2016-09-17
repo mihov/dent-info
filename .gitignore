@@ -1,6 +1,6 @@
 *.class
-.metadata/
-.recommenders/
+#.metadata/#
+#.recommenders/#
 RemoteSystemsTempFiles/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -23,7 +23,7 @@ target/
 *.class
  
 # Package Files #
-*.jar
+#*.jar#
 *.war
 *.ear
 *.db
@@ -57,9 +57,9 @@ Desktop.ini
 # Eclipse
 ######################
  
-*.pydevproject
-.project
-.metadata
+#*.pydevproject#
+#.project#
+#.metadata#
 bin/**
 tmp/**
 tmp/**/*
@@ -67,10 +67,10 @@ tmp/**/*
 *.bak
 *.swp
 *~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
+#local.properties#
+#.classpath#
+#.settings/#
+#.loadpath#
 /src/main/resources/rebel.xml
 # External tool builders
 .externalToolBuilders/
@@ -93,12 +93,12 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
-.loadpath
-.recommenders
+#.settings/#
+#.loadpath#
+#.recommenders#
 
 # Eclipse Core
-.project
+#.project#
 
 # External tool builders
 .externalToolBuilders/
@@ -131,7 +131,7 @@ local.properties
 .texlipse
 
 # STS (Spring Tool Suite)
-.springBeans
+#.springBeans
 
 # Code Recommenders
-.recommenders/
+#.recommenders/
