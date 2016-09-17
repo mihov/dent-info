@@ -55,10 +55,17 @@ public class PatientDAO {
 	
 	public void savePatient(Patient patient){
 		try {
-			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (password, email, fk_user_type_id) VALUES (?, ?, ?);");
-			st.setString(1, patient.getPassword());
-			st.setString(2, patient.getEmail());
-			st.setInt(3, 3);
+			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("INSERT INTO users (email, password, first_name, last_name, fk_user_type_id, fk_dentist_id, lab_id) VALUES (?, ?, ?, ?, ?, ?, ?);");
+			/*
+			 * email, password, firstName, lastName, fk_user_type_id, fk_dentist_id, lab_id*/
+			st.setString(1, patient.getEmail());
+			st.setString(2, patient.getPassword());
+			st.setString(3, patient.getFirstName());
+			st.setString(4, patient.getLastName());
+			st.setInt(5, patient.getFk_user_type_id());
+			st.setInt(6, patient.getFk_dentist_id());
+			st.setInt(7, patient.getLab_id());
+						
 			st.executeUpdate();
 			System.out.println("inserted patient in db");
 			System.out.println(patient.getEmail());

@@ -28,14 +28,14 @@ public class LogInServlet extends HttpServlet {
 
 		if (UserManager.getInstance().validLogIn(email, password)) {
 			request.getSession().setAttribute("user", UserManager.getInstance().getUser(email));
-			//System.out.println(UserManager.getInstance().getUser(email));
+			// System.out.println(UserManager.getInstance().getUser(email));
 			request.getSession().setAttribute("logged", email);
 			// request.getSession().setAttribute("user", email);
 			// request.getSession().setAttribute("firstName",
 			// ManagersManager.getInstance().getManager(email).getFirstName());
 			// request.getSession().setAttribute("lastName",
 			// ManagersManager.getInstance().getManager(email).getLastName());
-
+			System.out.println(UserManager.getInstance().getUser(email));
 			System.out.println(request.getSession());
 
 			switch (UserManager.getInstance().getUser(email).getFk_user_type_id()) {

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -9,19 +9,20 @@
 	RequestDispatcher rd = null;
 	if (username == null) {
 		rd = request.getRequestDispatcher("login.html");
+		rd.forward(request, response);
 	}
-	rd.forward(request, response);
+	
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Manager - Create Patient</title>
+<title>Dentist - Create Patient</title>
 </head>
 <body>
 	<h1>Create new patient</h1>
-	<form action="RegisterDentistServlet" method="post">
-		First name:<br> <input type="text" name="dentist_first_name" required>
-		Last name:<br> <input type="text" name="dentist_last_name" required>
-		Email:<br> <input type="email" name="dentist_email" required> 
+	<form action="RegisterPatientServlet" method="post">
+		First name:<input type="text" name="patient_first_name" required><br>
+		Last name:<input type="text" name="patient_last_name" required><br>
+		Email:<input type="email" name="patient_email" required> <br>
 		<input type="submit" value="Submit">
 	</form>
 </body>

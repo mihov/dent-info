@@ -34,7 +34,7 @@ public class RegisterDentistServlet extends HttpServlet {
 			//TODO add message page when invalid username
 		}
 		System.out.println("Dentist registered successfully");
-		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		RequestDispatcher rd = request.getRequestDispatcher("manager_main.jsp");
 		rd.forward(request, response);
 	}
 

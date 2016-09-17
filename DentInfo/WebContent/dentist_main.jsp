@@ -6,6 +6,8 @@
 <%@ page import="model.mainObjects.*"%>
 <%
 	String username = (String) request.getSession().getAttribute("logged");
+	String firstName = ((Dentist) session.getAttribute("user")).getFirstName();
+	String lastName = ((Dentist) session.getAttribute("user")).getLastName();
 	if (username == null) {
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
@@ -16,21 +18,21 @@
 </head>
 <body>
 	<h1>
-		Hello D-r <%=((Dentist) session.getAttribute("user")).getEmail()%>
-		</h1>
+		Hello D-r
+		<%=(firstName + " " + lastName)%>
+
+	</h1>
 	<a href="dentist_create_patient.jsp">Create new patient</a>
 	<br>
 	<a href="dentist_create_order.jsp">Create new order</a>
 	<br>
 	<hr>
-	<a href="dentist_edit_patient.jsp">Create Lab</a>
-	<br>
-	<a href="dentist_edit_order.jsp">Create Dentist</a>
+	<a href="dentist_edit_patient.jsp">Edit patient</a>
 	<br>
 	<hr>
-	<a href="dentist_edit_patient.jsp">Create Lab</a>
+	<a href="dentist_view_patients.jsp">Create Lab</a>
 	<br>
-	<a href="dentist_edit_order.jsp">Create Dentist</a>
+	<a href="dentist_view_orders.jsp">Create Dentist</a>
 	<br>
 </body>
 </html>
