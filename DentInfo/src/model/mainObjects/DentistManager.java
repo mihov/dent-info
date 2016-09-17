@@ -3,11 +3,8 @@ package model.mainObjects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import model.db.DentistDAO;
-import model.db.ManagerDAO;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
-import model.inTheLab.Manager;
-import model.inTheLab.ManagersManager;
 
 public class DentistManager {
 

@@ -46,11 +46,11 @@ public class DentalLaboratory {
 	}
 	
 	public void setLabId(int lab){
-		this.labId = labId;
+		this.labId = lab;
 	}
 	
 	public void setWebsite(String wbsite){
-		this.website = website;
+		this.website = wbsite;
 	}
 	
 	public String getWebsite(){

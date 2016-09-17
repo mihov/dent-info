@@ -1,10 +1,7 @@
 package model.inTheLab;
 
-import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
-import model.exceptions.ThisUserExistException;
-import model.mainObjects.Dentist;
 import model.mainObjects.Person;
 
 public class Manager extends Person {

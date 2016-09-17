@@ -1,12 +1,10 @@
 package model.mainObjects;
 
-import model.exceptions.EmptyNameException;
 import model.exceptions.InvalidEgnException;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidPhoneException;
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
-import model.tools.EGNValidator;
 import model.tools.EmailValidator;
 import model.tools.PassMD5;
 import model.tools.PhoneValidator;

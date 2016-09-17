@@ -5,9 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
-import java.sql.Statement;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
@@ -17,8 +15,6 @@ import model.inTheLab.ManagersManager;
 public class LabDAO {
 	
 	private static LabDAO instance;
-	
-	private ConcurrentHashMap<String, DentalLaboratory> labs;
 	
 	private LabDAO(){}
 	
@@ -39,8 +35,8 @@ public class LabDAO {
 			while(rs.next()){
 				ManagersManager managers = ManagersManager.getInstance();
 				Manager m = managers.getManager(rs.getString("email"));
-				DentalLaboratory lab = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getString("website"), rs.getInt("lab_id"));
-				labs.add(lab);
+				DentalLaboratory laboratory = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getString("website"), rs.getInt("lab_id"));
+				labs.add(laboratory);
 			}
 		} catch (SQLException e) {
 			System.out.println("Error getting the labs!");

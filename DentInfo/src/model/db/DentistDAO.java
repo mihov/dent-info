@@ -9,7 +9,6 @@ import java.util.Set;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
-import model.inTheLab.Manager;
 import model.mainObjects.Dentist;
 
 public class DentistDAO {

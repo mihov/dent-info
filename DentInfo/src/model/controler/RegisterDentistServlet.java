@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
-import model.inTheLab.ManagersManager;
 import model.mainObjects.DentistManager;
 
 @WebServlet("/RegisterDentistServlet")
