@@ -37,6 +37,7 @@ public class ServiceDAO {
 				DentalLaboratory dl = LaboratoryManager.getInstatnce().getLab(rs.getInt("fk_lab_id"));
 				Service service = new Service(rs.getString("name_long"), rs.getString("name_short"), rs.getDouble("price"), dl);
 				services.add(service);
+				dl.addServiceToList(service);
 			}
 		} catch (SQLException e) {
 			System.out.println("Error getting the labs!");

@@ -16,6 +16,7 @@ import model.inTheLab.LaboratoryManager;
 import model.inTheLab.Manager;
 import model.inTheLab.ManagersManager;
 import model.inTheLab.Service;
+import model.inTheLab.ServiceManager;
 import model.inTheLab.UserManager;
 import model.mainObjects.Person;
 
@@ -56,6 +57,9 @@ public class LogInServlet extends HttpServlet {
 		Person p = UserManager.getInstance().getUser(email);
 		System.out.println("adding the lab " + LaboratoryManager.getInstatnce().getLab(p.getLab_id()) + " to " + p.getEmail());
 		p.setCurrentLab(LaboratoryManager.getInstatnce().getLab(p.getLab_id()));
+		LaboratoryManager.getInstatnce();
+		ServiceManager.getInstance();
+		System.out.println("services should be added here !!!!!!!!!!!!");
 		System.out.println("And it is: " + p.getCurrentLab());
 		System.out.println(UserManager.getInstance().getUser(email).getLab_id());
 		RequestDispatcher rd = request.getRequestDispatcher(htmlFile);

@@ -32,7 +32,6 @@ public class AddServiceServlet extends HttpServlet {
 		ServiceManager.getInstance().registerService(s);
 		System.out.println("Adding the service to " + p.getEmail() + " with lab " + p.getCurrentLab());
 		p.getCurrentLab().addServiceToList(s);
-		p.getCurrentLab().addAllServices(ServiceManager.getInstance().getAllServices(p.getCurrentLab().getLabID()));
 		RequestDispatcher rd = request.getRequestDispatcher("manager_create_service.jsp");
 		rd.forward(request, response);
 	}
