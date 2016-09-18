@@ -1,5 +1,6 @@
 package model.db;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.DentalLaboratory;
 import model.inTheLab.LaboratoryManager;
 import model.inTheLab.Manager;
 import model.mainObjects.Dentist;
@@ -79,4 +81,19 @@ public class UserDAO {
 		System.out.println("Managers loaded successfully");
 		return users;
 	}
+	
+	public void setLab(DentalLaboratory dent,Person man){
+		try {
+			System.out.println(dent.getLabID());
+			PreparedStatement st = DBManager.getInstance().getConnection().prepareStatement("UPDATE users SET lab_id=? WHERE email LIKE (?);");
+			st.setInt(1, dent.getLabID());
+			st.setString(2, man.getEmail());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error while seting lab to a manager");
+			e.printStackTrace();
+		}
+		
+	}
+	
 }

@@ -67,6 +67,9 @@ public class LabDAO {
             {
                 int last_inserted_id = rs.getInt(1);
                 dentLab.setLabId(last_inserted_id);
+                Person p = dentLab.getManager();
+                UserDAO.getInstance().setLab(dentLab, UserManager.getInstance().getUser(p.getEmail()));
+                System.out.println("Dentist lab set: " + dentLab.getLabID() + " - " + dentLab.getManager().getEmail());
             }
 		} catch (SQLException e) {
 			System.out.println("Error creating the lab!");

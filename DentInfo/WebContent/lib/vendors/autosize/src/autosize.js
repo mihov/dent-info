@@ -145,7 +145,7 @@ function assign(ta, {setOverflowX = true, setOverflowY = true} = {}) {
 		Object.keys(style).forEach(key => {
 			ta.style[key] = style[key];
 		});
-	}.bind(ta, {
+	}.bindta{
 		height: ta.style.height,
 		resize: ta.style.resize,
 		overflowY: ta.style.overflowY,
