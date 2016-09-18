@@ -45,13 +45,6 @@ public class ManagersManager {
 		return false;
 	}
 	
-	public void registerManager(String password,String email) throws InvalidEmailException, InvalidUserNameException{
-		Manager m = new Manager(email, password,0);
-		System.out.println("manager made");
-		registerredManagers.put(email, m);
-		ManagerDAO.getInstance().saveUser(m);
-	}
-	
 	public Manager getManager(String email){
 		Manager m = registerredManagers.get(email);
 		System.out.println(m.getEmail());

@@ -9,6 +9,8 @@ import java.util.Set;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.DentalLaboratory;
+import model.inTheLab.LaboratoryManager;
 import model.mainObjects.Dentist;
 
 public class DentistDAO {
@@ -29,10 +31,11 @@ public class DentistDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("statement created");
-			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone, user_id FROM users WHERE fk_user_type_id LIKE (2);");
+			ResultSet resultSet = st.executeQuery("SELECT password, email, address, first_name, last_name, egn, phone, user_id, lab_id FROM users WHERE fk_user_type_id LIKE (2);");
 			System.out.println("result set created");
 			while(resultSet.next()){
-				Dentist d = new Dentist(resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("user_id"));
+				DentalLaboratory dl = LaboratoryManager.getInstatnce().getLab(resultSet.getInt("lab_id"));
+				Dentist d = new Dentist(resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("user_id"),dl);
 				if(resultSet.getString("address") != null){
 					d.setAddress(resultSet.getString("address"));
 				}

@@ -4,15 +4,18 @@ import java.util.HashMap;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.DentalLaboratory;
 
 public class Dentist extends Person {
 	private HashMap<String, Patient> patientlist;
-	private String bulstat;
+	private DentalLaboratory dentLab;
 	
-	public Dentist(String email, String password,int user_id)
+	public Dentist(String email, String password,int user_id,DentalLaboratory dentLab)
 			throws InvalidEmailException, InvalidUserNameException{
 		super(email, password,user_id);
 		this.patientlist = new HashMap<>();
+		this.dentLab = dentLab;
+		this.dentLab = dentLab;
 	}
 	
 	public Dentist(int user_id, String email, String password, String firstName, String lastName, String egn,
@@ -41,26 +44,16 @@ public class Dentist extends Person {
 			return false;
 		}
 	}
+	
+	public DentalLaboratory getLaboratory(){
+		return dentLab;
+	}
 
 	public Patient getPatient(String username) {
 		return this.patientlist.get(username);
 	}
 	
 
-	/**
-	 * @return the bulstat
-	 */
-	public String getBulstat() {
-		return bulstat;
-	}
-
-	/**
-	 * @param bulstat
-	 *            the bulstat to set
-	 */
-	public void setBulstat(String bulstat) {
-		this.bulstat = bulstat;
-	}
 }
 
 /*

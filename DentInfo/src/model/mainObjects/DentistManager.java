@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import model.db.DentistDAO;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.DentalLaboratory;
 
 public class DentistManager {
 
@@ -42,13 +43,7 @@ public class DentistManager {
 		System.out.println("could not find dentist");
 		return false;
 	}
-	
-	public void registerDentist(String password,String email) throws InvalidEmailException, InvalidUserNameException{
-		Dentist m = new Dentist(email, password,0);
-		System.out.println("manager made");
-		registerredDentists.put(email, m);
-		DentistDAO.getInstance().saveDentist(m);
-	}
+
 	
 	public Dentist getDentist(String email){
 		Dentist d = registerredDentists.get(email);
