@@ -8,6 +8,7 @@ import java.util.Set;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.LaboratoryManager;
 import model.inTheLab.Manager;
 import model.mainObjects.Dentist;
 import model.mainObjects.Patient;
@@ -36,9 +37,8 @@ public class UserDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("statement created");
-			ResultSet resultSet = st.executeQuery("SELECT * FROM users;");
+			ResultSet resultSet = st.executeQuery("SELECT user_id,email,password,first_name,last_name,egn,address,phone,fk_user_type_id,fk_dentist_id,lab_id FROM users;");
 			System.out.println("result set created");
-			
 			while (resultSet.next()) {
 
 				switch (resultSet.getInt("fk_user_type_id")) {

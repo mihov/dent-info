@@ -19,6 +19,7 @@ public class ManagersManager {
 			for(Manager m : ManagerDAO.getInstance().getAllManagers()){
 				registerredManagers.put(m.getEmail(), m);
 			}
+			System.out.println("Managers added");
 		} catch (InvalidEmailException e) {
 			System.out.println("An error with adding the managers in ManagersManager");
 		} catch (InvalidUserNameException e) {

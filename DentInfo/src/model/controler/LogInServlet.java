@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.db.ManagerDAO;
+import model.inTheLab.LaboratoryManager;
+import model.inTheLab.Manager;
 import model.inTheLab.ManagersManager;
 import model.inTheLab.UserManager;
+import model.mainObjects.Person;
 
 @WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet {
@@ -37,7 +40,7 @@ public class LogInServlet extends HttpServlet {
 			// ManagersManager.getInstance().getManager(email).getLastName());
 			System.out.println(UserManager.getInstance().getUser(email));
 			System.out.println(request.getSession());
-
+			
 			switch (UserManager.getInstance().getUser(email).getFk_user_type_id()) {
 			case 1:
 				htmlFile = "manager_main.jsp";
@@ -58,6 +61,7 @@ public class LogInServlet extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher(htmlFile);
 		rd.forward(request, response);
+		System.out.println(UserManager.getInstance().getUser(email).getLab_id());
 	}
 
 }

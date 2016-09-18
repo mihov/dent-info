@@ -17,6 +17,7 @@ public class LaboratoryManager {
 		try {
 			for(DentalLaboratory d : LabDAO.getInstance().getAllLabs()){
 				registerredLaboratories.put(d.getBulstat(), d);
+				System.out.println(d.getBulstat() + " -bulstat " + d.getName() + " - name");
 			}
 		} catch (InvalidUserNameException e) {
 			// TODO Auto-generated catch block
@@ -29,6 +30,11 @@ public class LaboratoryManager {
 			labMan = new LaboratoryManager();
 		}
 		return labMan;
+	}
+	
+	public DentalLaboratory getLab(int lab_id){
+		System.out.println(registerredLaboratories.get(lab_id).getName());
+		return registerredLaboratories.get(lab_id);
 	}
 	
 	public void registerLab(String bulstat,String name,String address,Manager manager){

@@ -6,6 +6,7 @@ import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidPhoneException;
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
+import model.inTheLab.LaboratoryManager;
 import model.tools.EGNValidator;
 import model.tools.EmailValidator;
 import model.tools.PassMD5;
@@ -220,6 +221,12 @@ public abstract class Person {
 		StringBuilder builder = new StringBuilder();
 		if (getEmail() != null)
 			builder.append(getEmail()).append("\t|\t");
+		if (getPassword() != null)
+			builder.append(getPassword()).append("\t|\t");
+		if (getLab_id() != null)
+			builder.append(getLab_id()).append("\t|\t");
+		if (currentLab != null)
+			builder.append(currentLab.getName()).append("\t|\t");
 		if (getEgn() != null)
 			builder.append(getEgn()).append("\t|\t");
 		if (getAddress() != null)

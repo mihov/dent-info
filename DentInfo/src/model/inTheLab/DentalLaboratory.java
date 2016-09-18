@@ -6,13 +6,14 @@ import java.util.HashSet;
 import model.exceptions.InvalidUserNameException;
 import model.mainObjects.Dentist;
 import model.mainObjects.Patient;
+import model.mainObjects.Person;
 
 public class DentalLaboratory {
 	private int labId;
 	private String bulstat;
 	private String name;
 	private String address;
-	private Manager manager;
+	private Person manager;
 	private HashMap<String, Manager> managerList;
 	private HashMap<String, Dentist> dentistList;
 	private HashMap<String, Service> serviceList;
@@ -26,17 +27,17 @@ public class DentalLaboratory {
 	 * @param address
 	 * @throws InvalidUserNameException 
 	 */
-	public DentalLaboratory(String bulstat, String name,String address, Manager manager,int labId) throws InvalidUserNameException {
+	public DentalLaboratory(String bulstat, String name,String address, Person manager,int labId) throws InvalidUserNameException {
 		this.setBulstat(bulstat);
 		this.setName(name);
 		this.setAddress(address);
-		this.setManager(manager);
 		this.labId = labId;
 		this.managerList = new HashMap<>();
 		this.dentistList = new HashMap<>();
 		this.serviceList = new HashMap<>();
 		this.orderList = new HashMap<>();
 		this.ordersById = new HashMap<>();
+		this.manager = manager;
 	}
 	
 	public int getLabID(){
@@ -99,7 +100,7 @@ public class DentalLaboratory {
 	/**
 	 * @return the manager
 	 */
-	public Manager getManager() {
+	public Person getManager() {
 		return manager;
 	}
 

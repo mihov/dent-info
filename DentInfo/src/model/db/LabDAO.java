@@ -11,6 +11,8 @@ import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
 import model.inTheLab.Manager;
 import model.inTheLab.ManagersManager;
+import model.inTheLab.UserManager;
+import model.mainObjects.Person;
 
 public class LabDAO {
 	
@@ -30,11 +32,15 @@ public class LabDAO {
 		try {
 			Statement st = DBManager.getInstance().getConnection().createStatement();
 			System.out.println("Statement made");
-			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.lab_id, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
+			ResultSet rs = st.executeQuery("SELECT l.name, l.bulstat, l.address, l.lab_id, l.fk_manager_id, u.email FROM laboratories l JOIN users u ON (l.lab_id = u.lab_id);");
 			System.out.println("result set created");
 			while(rs.next()){
-				ManagersManager managers = ManagersManager.getInstance();
-				Manager m = managers.getManager(rs.getString("email"));
+				UserManager managers = UserManager.getInstance();
+				Person m =managers.getUser(rs.getString("email"));
+				System.out.println("--------- vzemam manager: " + m.getEmail() + " ---------");
+				System.out.println("--------- lab bulstat: " + rs.getString("bulstat") + " ---------");
+				System.out.println("--------- lab name: " + rs.getString("name") + " ---------");
+				System.out.println("--------- lab id: " + rs.getString("lab_id") + " ---------");
 				DentalLaboratory laboratory = new DentalLaboratory(rs.getString("bulstat"), rs.getString("name"), rs.getString("address"),  m, rs.getInt("lab_id"));
 				labs.add(laboratory);
 			}
