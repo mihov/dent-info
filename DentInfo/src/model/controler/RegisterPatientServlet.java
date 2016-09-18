@@ -37,7 +37,7 @@ public class RegisterPatientServlet extends HttpServlet {
 		}
 		System.out.println("Patient registered successfully");
 
-		RequestDispatcher rd = request.getRequestDispatcher("dentist_main.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("dentist_list_patients.jsp");
 		rd.forward(request, response);
 	}
 }
