@@ -1,5 +1,9 @@
 package model.mainObjects;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import model.db.PatientDAO;
@@ -63,6 +67,31 @@ public class PatientManager {
 		System.out.println(p.getEmail());
 		System.out.println(p.getUser_id());
 		return p;
+	}
+
+	public ArrayList<Patient> getPatientsByDentist(Dentist dentist) {
+//		System.out.println("Dentist :" + dentist.getEmail());
+//		System.out.println(Arrays.toString(registerredPatients.values().toArray()));
+		ArrayList<Patient> patientsList = new ArrayList<>();
+		int dentistId = dentist.getUser_id();
+		//System.out.println(dentistId);
+		// Iterator it = this.registerredPatients.values().iterator();
+		
+		//this.registerredPatients.forEach((k,v)->System.out.println("Key : " + k + " Value : " + v.getFk_dentist_id()));
+
+		for (Entry<String, Patient> e : this.registerredPatients.entrySet()) {
+			if (e.getValue().getFk_dentist_id() == null) {
+				continue;
+			}
+			System.out.println("Patient: " + e.getValue().getFk_dentist_id());
+			System.out.println("Dentist: " + dentistId);
+			if (e.getValue().getFk_dentist_id() == dentistId) {
+				patientsList.add(e.getValue());
+				System.out.println(e.getValue());
+			}
+		}
+//		System.out.println(Arrays.toString(patientsList.toArray()));
+		return patientsList;
 	}
 
 }

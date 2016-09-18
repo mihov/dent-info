@@ -27,12 +27,10 @@
 	<a href="dentist_create_order.jsp">Create new order</a>
 	<br>
 	<hr>
-	<a href="dentist_edit_patient.jsp">Edit patient</a>
+	<a href="dentist_list_patients.jsp">Patients list</a>
 	<br>
 	<hr>
-	<a href="dentist_view_patients.jsp">Create Lab</a>
-	<br>
-	<a href="dentist_view_orders.jsp">Create Dentist</a>
+	<a href="dentist_view_orders.jsp">Orders list</a>
 	<br>
 </body>
 </html>
