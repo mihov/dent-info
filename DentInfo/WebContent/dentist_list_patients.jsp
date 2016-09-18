@@ -20,75 +20,95 @@
 <title>Dentist Patients</title>
 </head>
 <body>
-	<h1>
-		D-r
-		<%
-		out.print(dentist.getFirstName() + " " + dentist.getLastName());
-	%>
-		patients list
-	</h1>
-	<hr>
-	<div class="x_content">
-		<table id="datatable-responsive"
-			class="table table-striped table-bordered dt-responsive nowrap"
-			cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>First name</th>
-					<th>Last name</th>
-					<th>Email</th>
-					<th>EGN</th>
-					<th>Phone</th>
-					<th>Address</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-					for (Patient patient : patientList) {
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>
+					D-r
+					<%
+					out.print(dentist.getFirstName() + " " + dentist.getLastName());
 				%>
-				<tr>
-					<th>
+					patients list
+				</h2>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<p class="text-muted font-13 m-b-30">
+					<a href="dentist_main.jsp"><button type="submit"
+							class="btn btn-primary">Dentist main</button></a> <a
+						href="dentist_create_patient.jsp"><button type="submit"
+							class="btn btn-primary">New patient</button></a> <a
+						href="dentist_create_order.jsp"><button type="submit"
+							class="btn btn-primary">New order</button></a> <a
+						href="dentist_list_patients.jsp"><button type="submit"
+							class="btn btn-primary">Patients list</button></a> <a
+						href="dentist_view_orders.jsp"><button type="submit"
+							class="btn btn-primary">Orders List</button></a>
+				</p>
+			</div>
+			<div class="x_content">
+				<table id="datatable-responsive"
+					class="table table-striped table-bordered dt-responsive nowrap"
+					cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>First name</th>
+							<th>Last name</th>
+							<th>Email</th>
+							<th>EGN</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
 						<%
-							out.print(patient.getFirstName());
+							for (Patient patient : patientList) {
 						%>
-					</th>
-					<th>
+						<tr>
+							<th>
+								<%
+									out.print(patient.getFirstName());
+								%>
+							</th>
+							<th>
+								<%
+									out.print(patient.getLastName());
+								%>
+							</th>
+							<th>
+								<%
+									out.print(patient.getEmail());
+								%>
+							</th>
+							<th>
+								<%
+									out.print(patient.getEgn());
+								%>
+							</th>
+							<th>
+								<%
+									out.print(patient.getPhone());
+								%>
+							</th>
+							<th>
+								<%
+									out.print(patient.getAddress());
+								%>
+							</th>
+							<th><form action="dentist_edit_patient.jsp">
+									<input type="hidden" name="edit"
+										value="		<%out.print(patient.getUser_id());%>"> <input
+										type="submit" value="Edit">
+								</form></th>
+						</tr>
 						<%
-							out.print(patient.getLastName());
+							}
 						%>
-					</th>
-					<th>
-						<%
-							out.print(patient.getEmail());
-						%>
-					</th>
-					<th>
-						<%
-							out.print(patient.getEgn());
-						%>
-					</th>
-					<th>
-						<%
-							out.print(patient.getPhone());
-						%>
-					</th>
-					<th>
-						<%
-							out.print(patient.getAddress());
-						%>
-					</th>
-					<th><form action="dentist_edit_patient.jsp">
-							<input type="hidden" name="edit"
-								value="		<%out.print(patient.getUser_id());%>"> <input
-								type="submit" value="Edit">
-						</form></th>
-				</tr>
-				<%
-					}
-				%>
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<%@include file="bottom.html"%>
 </body>
