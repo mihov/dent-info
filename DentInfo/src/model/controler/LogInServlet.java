@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.db.ManagerDAO;
+import model.db.UserDAO;
 import model.inTheLab.LaboratoryManager;
 import model.inTheLab.Manager;
 import model.inTheLab.ManagersManager;
+import model.inTheLab.Service;
 import model.inTheLab.UserManager;
 import model.mainObjects.Person;
 
@@ -28,16 +30,9 @@ public class LogInServlet extends HttpServlet {
 		System.out.println(email);
 		System.out.println(password);
 		System.out.println("Someone is trying to log in");
-
 		if (UserManager.getInstance().validLogIn(email, password)) {
 			request.getSession().setAttribute("user", UserManager.getInstance().getUser(email));
-			// System.out.println(UserManager.getInstance().getUser(email));
 			request.getSession().setAttribute("logged", email);
-			// request.getSession().setAttribute("user", email);
-			// request.getSession().setAttribute("firstName",
-			// ManagersManager.getInstance().getManager(email).getFirstName());
-			// request.getSession().setAttribute("lastName",
-			// ManagersManager.getInstance().getManager(email).getLastName());
 			System.out.println(UserManager.getInstance().getUser(email));
 			System.out.println(request.getSession());
 			
@@ -58,10 +53,13 @@ public class LogInServlet extends HttpServlet {
 		} else {
 			htmlFile = "login.html";
 		}
-
+		Person p = UserManager.getInstance().getUser(email);
+		System.out.println("adding the lab " + LaboratoryManager.getInstatnce().getLab(p.getLab_id()) + " to " + p.getEmail());
+		p.setCurrentLab(LaboratoryManager.getInstatnce().getLab(p.getLab_id()));
+		System.out.println("And it is: " + p.getCurrentLab());
+		System.out.println(UserManager.getInstance().getUser(email).getLab_id());
 		RequestDispatcher rd = request.getRequestDispatcher(htmlFile);
 		rd.forward(request, response);
-		System.out.println(UserManager.getInstance().getUser(email).getLab_id());
 	}
 
 }

@@ -1,31 +1,50 @@
 package model.inTheLab;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import model.db.DBManager;
+
 public class Service {
 	static Integer id = 1;
-	private String serialNumber;// This is custom unique ID
+	private Integer serialNumber;// This is custom unique ID
 	private String longName;
 	private String shortName;
 	private Double price;
+	private Integer labId;
+	private Integer dbID;
 
-	public Service(String longName, String shortName, Double price, String serialNumber) {
-		if (serialNumber.length() < 1) {
-			this.serialNumber = String.valueOf(id++);
-		} else {
-			this.serialNumber = serialNumber;
-		}
+	public Service(String longName, String shortName, Double price, DentalLaboratory dl) {
+		this.serialNumber = id++;
 		this.setLongName(longName);
 		this.setShortName(shortName);
 		this.setPrice(price);
 	}
 	
 	
+	public Integer getDbId(){
+		return this.dbID;
+	}
 	
+	public void setDbId(int id){
+		this.dbID = id;
+	}
+	
+	public void setLabId(Integer labId) {
+		this.labId = labId;
+	}
+	
+	public Integer getLabId() {
+		return labId;
+	}
 
-	public String getSerialNumber() {
+	public Integer getSerialNumber() {
 		return serialNumber;
 	}
 
-	public void setSerialNumber(String serialNumber) {
+	public void setSerialNumber(Integer serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 

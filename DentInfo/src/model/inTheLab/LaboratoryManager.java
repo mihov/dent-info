@@ -8,7 +8,7 @@ import model.exceptions.InvalidUserNameException;
 
 public class LaboratoryManager {
 	
-	private ConcurrentHashMap<String, DentalLaboratory> registerredLaboratories;
+	private ConcurrentHashMap<Integer, DentalLaboratory> registerredLaboratories;
 	
 	private static LaboratoryManager labMan;
 	
@@ -16,7 +16,7 @@ public class LaboratoryManager {
 		registerredLaboratories = new ConcurrentHashMap<>();
 		try {
 			for(DentalLaboratory d : LabDAO.getInstance().getAllLabs()){
-				registerredLaboratories.put(d.getBulstat(), d);
+				registerredLaboratories.put(d.getLabID(), d);
 				System.out.println(d.getBulstat() + " -bulstat " + d.getName() + " - name");
 			}
 		} catch (InvalidUserNameException e) {
@@ -32,8 +32,7 @@ public class LaboratoryManager {
 		return labMan;
 	}
 	
-	public DentalLaboratory getLab(int lab_id){
-		System.out.println(registerredLaboratories.get(lab_id).getName());
+	public synchronized DentalLaboratory getLab(int lab_id){
 		return registerredLaboratories.get(lab_id);
 	}
 	
@@ -43,7 +42,7 @@ public class LaboratoryManager {
 			System.out.println("Lab created");
 			LabDAO.getInstance().createLab(dl);
 			manager.setCurrentLab(dl);
-			registerredLaboratories.put(dl.getBulstat(), dl);
+			registerredLaboratories.put(dl.getLabID(), dl);
 		} catch (InvalidUserNameException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

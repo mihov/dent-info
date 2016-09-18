@@ -1,7 +1,9 @@
 package model.inTheLab;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import model.exceptions.InvalidUserNameException;
 import model.mainObjects.Dentist;
@@ -16,7 +18,7 @@ public class DentalLaboratory {
 	private Person manager;
 	private HashMap<String, Manager> managerList;
 	private HashMap<String, Dentist> dentistList;
-	private HashMap<String, Service> serviceList;
+	private HashMap<Integer, Service> serviceList;
 	private HashMap<Dentist, HashMap<Patient, HashSet<Order>>> orderList;
 	private HashMap<Integer, Order> ordersById;
 
@@ -38,6 +40,14 @@ public class DentalLaboratory {
 		this.orderList = new HashMap<>();
 		this.ordersById = new HashMap<>();
 		this.manager = manager;
+	}
+	
+	public void addAllServices(Map<Integer,Service> services){
+		this.serviceList.putAll(services);
+	}
+	
+	public Map<Integer, Service> getAllServices(){
+		return Collections.unmodifiableMap(serviceList);
 	}
 	
 	public int getLabID(){

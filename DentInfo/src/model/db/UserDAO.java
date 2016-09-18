@@ -79,6 +79,7 @@ public class UserDAO {
 			return users;
 		}
 		System.out.println("Managers loaded successfully");
+		DBManager.getInstance().closeConnection();
 		return users;
 	}
 	
@@ -89,6 +90,7 @@ public class UserDAO {
 			st.setInt(1, dent.getLabID());
 			st.setString(2, man.getEmail());
 			st.executeUpdate();
+			DBManager.getInstance().closeConnection();
 		} catch (SQLException e) {
 			System.out.println("Error while seting lab to a manager");
 			e.printStackTrace();

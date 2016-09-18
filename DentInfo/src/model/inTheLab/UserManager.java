@@ -39,7 +39,7 @@ public class UserManager {
 		return false;
 	}
 	
-	public Person getUser(String email){
+	public synchronized Person getUser(String email){
 		return registerredUsers.get(email);
 	}
 }
