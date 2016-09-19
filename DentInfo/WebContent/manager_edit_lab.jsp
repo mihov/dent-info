@@ -4,8 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+	<%@include file="head.html"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Edit laboratory</title>
+		<title>Manager create service</title>
 		<%
 			String username = (String) request.getSession().getAttribute("logged");
 			RequestDispatcher rd = null;
@@ -23,12 +24,47 @@
 		%>
 	</head>
 	<body>
-		<h1>Make changes to <%= p.getCurrentLab().getName() %></h1>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>
+					Mr.
+					<%
+					out.print(p.getFirstName() + " " + p.getLastName());
+				%>
+					patients list
+				</h2>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<p class="text-muted font-13 m-b-30">
+					<a href="manager_main.jsp"><button type="submit"
+							class="btn btn-primary">Manager main</button></a> <a
+						href="manager_create_dentist.jsp"><button type="submit"
+							class="btn btn-primary">Create dentist</button></a> <a
+						href="manager_create_service.jsp"><button type="submit"
+							class="btn btn-primary">Create service</button></a> <a
+						href="manager_create_lab.jsp"><button type="submit"
+							class="btn btn-primary">Create lab</button></a> <a
+						href="manager_edit_lab.jsp"><button type="submit"
+							class="btn btn-primary">Edit lab</button></a> <a
+						href="manager_edit_dentist.jsp"><button type="submit"
+							class="btn btn-primary">Edit Dentist</button></a> <a
+						href="manager_edit_service.jsp"><button type="submit"
+							class="btn btn-primary">Edit service</button></a>
+							<a href="Logout"><button type="submit"
+							class="btn btn-primary">Logout</button></a>
+				</p>
+			</div>
+			<h1>Make changes to <%= p.getCurrentLab().getName() %></h1>
 		<form action="EditLabServlet" method="POST">
 			Name:<br> <input type="text" name="lab_name" required><br/>
 			Bulstat:<br> <input type="text" name="lab_bulstat" required><br/>
 			Adress:<br> <input type="text" name="lab_address" required> <br/>
 			<input type="submit" value="Submit">
 		</form>
+			</div>
+	</div>
+	<%@include file="bottom.html"%>
 	</body>
 </html>
