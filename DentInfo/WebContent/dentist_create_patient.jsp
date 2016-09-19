@@ -42,55 +42,55 @@
 						href="dentist_list_patients.jsp"><button type="submit"
 							class="btn btn-primary">Patients list</button></a> <a
 						href="dentist_view_orders.jsp"><button type="submit"
-							class="btn btn-primary">Orders List</button></a>
+							class="btn btn-primary">Orders List</button></a> <a href="Logout"><button
+							type="submit" class="btn btn-primary">Logout</button></a>
 				</p>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
 				<br>
-				<div class="x_title">
-					<form action="RegisterPatientServlet" method="post">
+				<form action="RegisterPatientServlet" method="post"
+					class="form-horizontal form-label-left">
 
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">First
-								name:</label>
-							<div class="col-md-9 col-sm-9 col-xs-12">
-								<input type="text" class="form-control"
-									placeholder="First name here" name="patient_first_name"
-									required>
-							</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">First
+							name:</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control"
+								placeholder="First name here" name="patient_first_name" required>
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Last
-								name:</label>
-							<div class="col-md-9 col-sm-9 col-xs-12">
-								<input type="text" class="form-control"
-									placeholder="Last name here" name="patient_last_name" required>
-							</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">Last
+							name:</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control"
+								placeholder="Last name here" name="patient_last_name" required>
 						</div>
+					</div>
 
 
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">First
-								name:</label>
-							<div class="col-md-9 col-sm-9 col-xs-12">
-								<input type="email" class="form-control"
-									placeholder="email@put.here" name="patient_email" required>
-							</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">First
+							name:</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="email" class="form-control"
+								placeholder="email@put.here" name="patient_email" required>
 						</div>
+					</div>
 
-						<div class="ln_solid"></div>
-						<div class="form-group">
-							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-								<button type="reset" class="btn btn-primary">Cancel</button>
-								<button type="submit" class="btn btn-success">Send</button>
-							</div>
+					<div class="ln_solid"></div>
+					<div class="form-group">
+						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+							<button type="reset" class="btn btn-primary">Cancel</button>
+							<button type="submit" class="btn btn-success">Add</button>
 						</div>
-					</form>
-					<div class="clearfix"></div>
-				</div>
+					</div>
+				</form>
+				<div class="clearfix"></div>
 			</div>
+
 		</div>
 	</div>
 	<%@include file="bottom.html"%>
