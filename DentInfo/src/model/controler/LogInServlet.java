@@ -54,14 +54,16 @@ public class LogInServlet extends HttpServlet {
 		} else {
 			htmlFile = "login.html";
 		}
-		Person p = UserManager.getInstance().getUser(email);
-		System.out.println("adding the lab " + LaboratoryManager.getInstatnce().getLab(p.getLab_id()) + " to " + p.getEmail());
-		p.setCurrentLab(LaboratoryManager.getInstatnce().getLab(p.getLab_id()));
-		LaboratoryManager.getInstatnce();
-		ServiceManager.getInstance();
-		System.out.println("services should be added here !!!!!!!!!!!!");
-		System.out.println("And it is: " + p.getCurrentLab());
-		System.out.println(UserManager.getInstance().getUser(email).getLab_id());
+		if(htmlFile != "login.html"){
+			Person p = UserManager.getInstance().getUser(email);
+			System.out.println("adding the lab " + LaboratoryManager.getInstatnce().getLab(p.getLab_id()) + " to " + p.getEmail());
+			p.setCurrentLab(LaboratoryManager.getInstatnce().getLab(p.getLab_id()));
+			LaboratoryManager.getInstatnce();
+			ServiceManager.getInstance();
+			System.out.println("services should be added here !!!!!!!!!!!!");
+			System.out.println("And it is: " + p.getCurrentLab());
+			System.out.println(UserManager.getInstance().getUser(email).getLab_id());
+		}
 		RequestDispatcher rd = request.getRequestDispatcher(htmlFile);
 		rd.forward(request, response);
 	}
