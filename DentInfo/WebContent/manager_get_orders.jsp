@@ -59,17 +59,17 @@
 				<table id="datatable-responsive"
 					class="table table-striped table-bordered dt-responsive nowrap"
 					cellspacing="0" width="100%">
-
+						<tr>
+							<th>Service serial number</th>
+							<th>Long name</th>
+							<th>Short name</th>
+							<th>Price</th>
+						</tr>
 						<%for(Order o : dl.getAllOrders().values()){		%>	
 							<tr>					
 								<th rowspan="4">Order num:<%= o.getId() %>from:<%= o.getDentist().getEmail()%> Status:<%= o.getStatus() %></th>
 							</tr>
-							<tr>
-								<th>Service serial number</th>
-								<th>Long name</th>
-								<th>Short name</th>
-								<th>Price</th>
-							</tr>
+
 							<%for(Integer i : o.getAllServices().keySet()){	%>		
 								<%for(Service s : o.getAllServices().get(i)){%>	
 							<tr>
@@ -82,10 +82,9 @@
 							<%} 											%>
 							<tr>
 								<th rowspan="2">Price for all:<%= o.getPrice() 	%></th>
-								<form action="SetOrderAsDeliveredServlet" method="POST">
+								<form action="SetOrderStatusServlet" method="POST">
+									<% request.getSession().setAttribute("ored", o.getId()); %>
 									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Delivered</button></a></td>
-								</form>
-								<form action="SetOrderAsReadyServlet" method="POST">
 									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Ready</button></a></td>
 								</form>
 							</tr>

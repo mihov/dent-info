@@ -47,6 +47,14 @@ public class Order {
 		}
 		return s;
 	}
+	
+	public void setAsReady(){
+		this.isReady = true;
+	}
+	
+	public void setAsPayed(){
+		this.isPayed = true;
+	}
 
 	public Integer getId() {
 		return id;
