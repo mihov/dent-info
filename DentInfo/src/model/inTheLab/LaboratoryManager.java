@@ -4,6 +4,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import model.db.LabDAO;
 import model.exceptions.InvalidUserNameException;
+import model.mainObjects.Dentist;
+import model.mainObjects.Patient;
 
 
 public class LaboratoryManager {
@@ -60,6 +62,11 @@ public class LaboratoryManager {
 			System.out.println("Invalid name in laboratory manager");
 			e.printStackTrace();
 		}
+	}
+	
+	public void setOrder(Order order){
+		DentalLaboratory dl = order.getDentist().getCurrentLab();
+		registerredLaboratories.get(dl.getLabID()).setOrderToOrderList(order);
 	}
 
 }

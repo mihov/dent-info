@@ -168,7 +168,7 @@ public class DentalLaboratory {
 		return this.ordersById.get(id);
 	}
 
-	public Boolean setOrderToOrderList(Order order) {
+	public void setOrderToOrderList(Order order) {
 		if (order != null) {
 			if (!this.orderList.containsKey(order.getDentist())) {
 				/* If dentist is not in the list put them */
@@ -181,10 +181,9 @@ public class DentalLaboratory {
 			// put current order to ordersById list
 			this.ordersById.put(order.getId(), order);
 			// put current order to orderList
-			return this.orderList.get(order.getDentist()).get(order.getPatient()).add(order);
-		} else {
-			return false;
-		}
+			this.orderList.get(order.getDentist()).get(order.getPatient()).add(order);
+			System.out.println("Orders were added to the dentist lab you wanted with name: " + this.name);
+		} 
 	}
 }
 
