@@ -94,6 +94,7 @@ public class PatientDAO {
 			String msg = "<h1>You have an account</h1><a href=\"http://dent-info.net\"><h1>www.dent-info.net</h1></a><h1>password: "
 					+ patient.getPassword() + "</h1>";
 			SendMail.sendMail(patient.getEmail(), sub, msg);
+			DBManager.getInstance().closeConnection();
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the user");
 			e.printStackTrace();

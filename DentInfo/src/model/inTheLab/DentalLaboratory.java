@@ -63,7 +63,7 @@ public class DentalLaboratory {
 		return this.bulstat;
 	}
 
-	private void setBulstat(String bulstat) {
+	public void setBulstat(String bulstat) {
 		this.bulstat = bulstat;
 	}
 

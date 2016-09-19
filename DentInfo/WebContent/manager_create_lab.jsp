@@ -29,7 +29,6 @@
 <h1>Register a new laboratory</h1>
 	<form action="RegisterLabServlet" method="post">
 		Laboratory name:<input type="text" name="name" required><br>
-		Email:<input type="email" name="email" required> <br>
 		Bulstat:<input type="text" name="bulstat" required><br>
 		Address:<input type="text" name="occupation"><br>
 		<input 	type="submit" value="Submit">

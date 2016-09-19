@@ -71,6 +71,7 @@ public class DentistDAO {
                 int last_inserted_id = rs.getInt(1);
                 dentist.setUserId(last_inserted_id);
             }
+			DBManager.getInstance().closeConnection();
 			System.out.println("Dentist added successfully");
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the dentist");

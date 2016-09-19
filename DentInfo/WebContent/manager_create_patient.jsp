@@ -22,6 +22,9 @@
 		First name:<br> <input type="text" name="dentist_first_name" required>
 		Last name:<br> <input type="text" name="dentist_last_name" required>
 		Email:<br> <input type="email" name="dentist_email" required> 
+		EGN:<br> <input type="email" name="dentist_email" required> 
+		Phone:<br> <input type="email" name="dentist_email" required> 
+		Address:<br> <input type="email" name="dentist_email" required> 
 		<input type="submit" value="Submit">
 	</form>
 </body>

@@ -71,11 +71,36 @@ public class LabDAO {
                 UserDAO.getInstance().setLab(dentLab, UserManager.getInstance().getUser(p.getEmail()));
                 System.out.println("Dentist lab set: " + dentLab.getLabID() + " - " + dentLab.getManager().getEmail());
             }
+			DBManager.getInstance().closeConnection();
 		} catch (SQLException e) {
 			System.out.println("Error creating the lab!");
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void editLab(DentalLaboratory dentLab,String name,String bulstat,String address){
+		try {
+			System.out.println(dentLab.getAddress() + " " + dentLab.getName() +  " " + dentLab.getBulstat() + " is this the problem");
+			PreparedStatement ps = DBManager.getInstance().getConnection().prepareStatement("UPDATE laboratories SET name=? WHERE name LIKE (?);");
+			ps.setString(1, name);
+			ps.setString(2, dentLab.getName());
+			ps.executeUpdate();
+			DBManager.getInstance().closeConnection();
+			PreparedStatement ps1 = DBManager.getInstance().getConnection().prepareStatement("UPDATE laboratories SET bulstat=? WHERE name LIKE (?);");
+			ps1.setString(1, bulstat);
+			ps1.setString(2, dentLab.getName());
+			ps1.executeUpdate();
+			DBManager.getInstance().closeConnection();
+			PreparedStatement ps2 = DBManager.getInstance().getConnection().prepareStatement("UPDATE laboratories SET address=? WHERE name LIKE (?);");
+			ps2.setString(1, address);
+			ps2.setString(2, dentLab.getName());
+			ps2.executeUpdate();
+			DBManager.getInstance().closeConnection();
+		} catch (SQLException e) {
+			System.out.println("ERROR WITH prepared statement");
+			e.printStackTrace();
+		}
 	}
 	
 	

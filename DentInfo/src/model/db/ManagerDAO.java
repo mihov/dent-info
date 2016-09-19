@@ -70,6 +70,7 @@ public class ManagerDAO {
                 int last_inserted_id = rs.getInt(1);
                 manager.setUserId(last_inserted_id);
             }
+			DBManager.getInstance().closeConnection();
 			System.out.println("User added successfully");
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the user");

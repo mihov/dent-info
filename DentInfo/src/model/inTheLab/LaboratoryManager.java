@@ -48,5 +48,18 @@ public class LaboratoryManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void editLab(int labId,String name,String bulstat,String address){
+		DentalLaboratory dentLab = LaboratoryManager.getInstatnce().getLab(labId);
+		LabDAO.getInstance().editLab(dentLab, name, bulstat, address);
+		try {
+			registerredLaboratories.get(labId).setName(name);
+			registerredLaboratories.get(labId).setBulstat(bulstat);
+			registerredLaboratories.get(labId).setAddress(address);
+		} catch (InvalidUserNameException e) {
+			System.out.println("Invalid name in laboratory manager");
+			e.printStackTrace();
+		}
+	}
 
 }
