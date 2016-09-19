@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.inTheLab.Order;
+import model.inTheLab.OrderManager;
 
 @WebServlet("/SaveOrderStatusServlet")
 public class SaveOrderStatusServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Order om = OrderManager.getInstance.getOrder(request.getAttribute("order"));//vzimame order po order id
-		//Трябва ни OrderManager
+		Order om = OrderManager.getInstance().getOrder((Integer) request.getAttribute("order"));//vzimame order po order id
 		String act = request.getParameter("act");
 		if (act == null) {
 		    

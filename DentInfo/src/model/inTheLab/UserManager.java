@@ -61,4 +61,14 @@ public class UserManager {
 		m.setUserTypeFk(2);
 		DentistDAO.getInstance().saveDentist(m);
 	}
+	
+	public Person getUserById(int id){
+		for(Person p : registerredUsers.values()){
+			if(p.getUser_id() == id){
+				return p;
+			}
+		}
+		System.out.println("OOPS didn't find user with that id !!!!");
+		return null;
+	}
 }
