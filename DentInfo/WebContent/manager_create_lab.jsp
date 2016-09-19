@@ -51,7 +51,9 @@
 						href="manager_edit_lab.jsp"><button type="submit"
 							class="btn btn-primary">Edit lab</button></a><a
 						href="manager_edit_service.jsp"><button type="submit"
-							class="btn btn-primary">Edit service</button></a>
+							class="btn btn-primary">Edit service</button></a><a
+							href="manager_get_orders.jsp"><button type="submit"
+								class="btn btn-primary">Orders</button></a>
 							<a href="Logout"><button type="submit"
 							class="btn btn-primary">Logout</button></a>
 				</p>
