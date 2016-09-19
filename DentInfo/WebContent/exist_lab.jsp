@@ -12,14 +12,6 @@
 				rd = request.getRequestDispatcher("login.html");
 				rd.forward(request, response);
 			}
-			if (request.getSession().getAttribute("lab") != null) {
-				rd = request.getRequestDispatcher("exist_lab.jsp");
-				rd.forward(request, response);
-			}
-			if(p.getCurrentLab() != null){
-				rd = request.getRequestDispatcher("exist_lab.jsp");
-				rd.forward(request, response);
-			}
 		%>
 	<head>
 	<%@include file="head.html"%>
@@ -30,13 +22,6 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>
-					Mr.
-					<%
-					out.print(p.getFirstName() + " " + p.getLastName());
-				%>
-					patients list
-				</h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
@@ -59,13 +44,7 @@
 							class="btn btn-primary">Logout</button></a>
 				</p>
 			</div>
-				<h2>Register a new laboratory</h2>
-				<form action="RegisterLabServlet" method="post">
-					<p>Laboratory name:	</p><input type="text" name="name" required		><br>
-					<p>Bulstat:			</p><input type="text" name="bulstat" required	><br>
-					<p>Address:			</p><input type="text" name="occupation"		><br>
-					<input 	type="submit" value="Submit">
-				</form>
+			<h2><font color="red">You already have a lab</font></h2>
 		</div>
 	</div>
 	<%@include file="bottom.html"%>
