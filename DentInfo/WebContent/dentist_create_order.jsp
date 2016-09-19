@@ -6,14 +6,14 @@
 <%@ page import="model.mainObjects.*, java.util.ArrayList"%>
 <%
 	String username = (String) request.getSession().getAttribute("logged");
-	Dentist dentist = ((Dentist) session.getAttribute("user"));
-	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
-	String firstName = dentist.getFirstName();
-	String lastName = dentist.getLastName();
 	if (username == null) {
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
+	Dentist dentist = ((Dentist) session.getAttribute("user"));
+	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
+	String firstName = dentist.getFirstName();
+	String lastName = dentist.getLastName();
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -58,13 +58,18 @@
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<select class="form-control">
 								<option></option>
-								<% for (Patient patient : patientList) {
-								String fullname = patient.getFirstName()+" "+ patient.getLastName();
+								<%
+									for (Patient patient : patientList) {
+										String fullname = patient.getFirstName() + " " + patient.getLastName();
 								%>
 								<option value="<%out.print(patient.getUser_id());%>">
-									<%out.print(fullname); %>
+									<%
+										out.print(fullname);
+									%>
 								</option>
-								<%} %>
+								<%
+									}
+								%>
 							</select>
 						</div>
 					</div>

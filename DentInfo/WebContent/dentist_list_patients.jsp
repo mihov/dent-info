@@ -4,14 +4,14 @@
 <html>
 <%@ page import="model.mainObjects.*, java.util.ArrayList"%>
 <%
-	Dentist dentist = (Dentist) request.getSession().getAttribute("user");
-	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
 	String username = (String) request.getSession().getAttribute("logged");
 	RequestDispatcher rd = null;
 	if (username == null) {
 		rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
+	Dentist dentist = (Dentist) request.getSession().getAttribute("user");
+	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
 %>
 
 <head>
@@ -43,9 +43,8 @@
 						href="dentist_list_patients.jsp"><button type="submit"
 							class="btn btn-primary">Patients list</button></a> <a
 						href="dentist_view_orders.jsp"><button type="submit"
-							class="btn btn-primary">Orders List</button></a>
-							<a href="Logout"><button type="submit"
-							class="btn btn-primary">Logout</button></a>
+							class="btn btn-primary">Orders List</button></a> <a href="Logout"><button
+							type="submit" class="btn btn-primary">Logout</button></a>
 				</p>
 			</div>
 			<div class="x_content">

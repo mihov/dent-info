@@ -4,14 +4,14 @@
 <html>
 <%@ page import="model.mainObjects.*, java.util.ArrayList"%>
 <%
-	Dentist dentist = (Dentist) request.getSession().getAttribute("user");
-	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
 	String username = (String) request.getSession().getAttribute("logged");
 	RequestDispatcher rd = null;
 	if (username == null) {
 		rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
+	Dentist dentist = (Dentist) request.getSession().getAttribute("user");
+	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
 %>
 
 <head>

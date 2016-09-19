@@ -4,14 +4,17 @@
 <html>
 <%@ page import="model.mainObjects.*"%>
 <%
-	String username = (String) request.getSession().getAttribute("logged");
-	Dentist dentist = ((Dentist) session.getAttribute("user"));
-	String firstName = dentist.getFirstName();
-	String lastName = dentist.getLastName();
+	
+
+String username = (String) request.getSession().getAttribute("logged");
 	if (username == null) {
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
+
+	Dentist dentist = ((Dentist) session.getAttribute("user"));
+	String firstName = dentist.getFirstName();
+	String lastName = dentist.getLastName();
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
@@ -43,9 +46,8 @@
 						href="dentist_list_patients.jsp"><button type="submit"
 							class="btn btn-primary">Patients list</button></a> <a
 						href="dentist_view_orders.jsp"><button type="submit"
-							class="btn btn-primary">Orders List</button></a>
-							<a href="Logout"><button type="submit"
-							class="btn btn-primary">Logout</button></a>
+							class="btn btn-primary">Orders List</button></a> <a href="Logout"><button
+							type="submit" class="btn btn-primary">Logout</button></a>
 				</p>
 			</div>
 			<div class="x_content"></div>
