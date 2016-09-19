@@ -2,8 +2,10 @@ package model.inTheLab;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import model.mainObjects.Dentist;
@@ -96,6 +98,10 @@ public class Order {
 			}
 		}
 		this.setPrice(total);
+	}
+	
+	public Map<Integer, ArrayList<Service>> getAllServices(){
+		return Collections.unmodifiableMap(servicesList);
 	}
 
 	public String getServiceList() {

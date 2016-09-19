@@ -59,19 +59,28 @@
 				<table id="datatable-responsive"
 					class="table table-striped table-bordered dt-responsive nowrap"
 					cellspacing="0" width="100%">
-					<tr>
-						<th></th>
-						<th>Long name</th>
-						<th>Short name</th>
-						<th>Price</th>
-					</tr>
+
 						<%for(Order o : dl.getAllOrders().values()){		%>	
-							<tr>
-								<th><%= 						%></th>
-								<td><%= 						%></td>
-								<td><%= 						%></td>
-								<td><%= 						%></td>
+							<tr>					
+								<th rowspan="4">Order num:<%= o.getId() %>from:<%= o.getDentist().getEmail() %></th>
 							</tr>
+							<tr>
+								<th>Service serial number</th>
+								<th>Long name</th>
+								<th>Short name</th>
+								<th>Price</th>
+							</tr>
+							<%for(Integer i : o.getAllServices().keySet()){		%>		
+								<%for(Service s : o.getAllServices().get(i)){		%>	
+							<tr>
+								<th><%= s.getSerialNumber()					%></th>
+								<td><%= s.getLongName()						%></td>
+								<td><%= s.getShortName()					%></td>
+								<td><%= o.getPrice()						%></td>
+							</tr>
+								<%} 													%>
+							<%} 													%>
+							<th rowspan="4">Price for all:<%= o.getPrice() %></th>
 						<%} 													%>
 				</table>
 		</div>
