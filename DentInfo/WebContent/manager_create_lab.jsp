@@ -35,7 +35,6 @@
 					<%
 					out.print(p.getFirstName() + " " + p.getLastName());
 				%>
-					patients list
 				</h2>
 				<div class="clearfix"></div>
 			</div>
@@ -50,16 +49,14 @@
 						href="manager_create_lab.jsp"><button type="submit"
 							class="btn btn-primary">Create lab</button></a> <a
 						href="manager_edit_lab.jsp"><button type="submit"
-							class="btn btn-primary">Edit lab</button></a> <a
-						href="manager_edit_dentist.jsp"><button type="submit"
-							class="btn btn-primary">Edit Dentist</button></a> <a
+							class="btn btn-primary">Edit lab</button></a><a
 						href="manager_edit_service.jsp"><button type="submit"
 							class="btn btn-primary">Edit service</button></a>
 							<a href="Logout"><button type="submit"
 							class="btn btn-primary">Logout</button></a>
 				</p>
 			</div>
-				<h2>Register a new laboratory</h2>
+				<h1>Make changes to <%= p.getCurrentLab().getName() %></h1>
 				<form action="RegisterLabServlet" method="post">
 					<p>Laboratory name:	</p><input type="text" name="name" required		><br>
 					<p>Bulstat:			</p><input type="text" name="bulstat" required	><br>

@@ -47,8 +47,6 @@
 							class="btn btn-primary">Create lab</button></a> <a
 						href="manager_edit_lab.jsp"><button type="submit"
 							class="btn btn-primary">Edit lab</button></a> <a
-						href="manager_edit_dentist.jsp"><button type="submit"
-							class="btn btn-primary">Edit Dentist</button></a> <a
 						href="manager_edit_service.jsp"><button type="submit"
 							class="btn btn-primary">Edit service</button></a>
 							<a href="Logout"><button type="submit"

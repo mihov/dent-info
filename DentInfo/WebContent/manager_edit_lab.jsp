@@ -32,7 +32,6 @@
 					<%
 					out.print(p.getFirstName() + " " + p.getLastName());
 				%>
-					patients list
 				</h2>
 				<div class="clearfix"></div>
 			</div>
