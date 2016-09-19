@@ -70,6 +70,7 @@ public class ManagerDAO {
                 int last_inserted_id = rs.getInt(1);
                 manager.setUserId(last_inserted_id);
             }
+			DBManager.getInstance().closeConnection();
 			System.out.println("User added successfully");
 		} catch (SQLException e) {
 			System.out.println("Oops .. did not save the user");
@@ -84,6 +85,7 @@ public class ManagerDAO {
 			st.setInt(1, dent.getLabID());
 			st.setString(2, man.getEmail());
 			st.executeUpdate();
+			DBManager.getInstance().closeConnection();
 		} catch (SQLException e) {
 			System.out.println("Error while seting lab to a manager");
 			e.printStackTrace();

@@ -63,25 +63,25 @@ public class Manager extends Person {
 		return false;
 	}
 
-	public Boolean addNewService(String longName, String shortName, Double price, String serialNumber) {
-		Service service = new Service(longName, shortName, price, serialNumber);
-		if (this.getCurrentLab().getService(serialNumber) == null) {
-			this.getCurrentLab().addServiceToList(service);
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public Boolean addNewService(String longName, String shortName, Double price, String serialNumber) {
+//		Service service = new Service(longName, shortName, price, serialNumber,this.getCurrentLab());
+//		if (this.getCurrentLab().getService(serialNumber) == null) {
+//			this.getCurrentLab().addServiceToList(service);
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
-	public Boolean changeService(String longName, String shortName, Double price, String serialNumber) {
-		Service service = new Service(longName, shortName, price, serialNumber);
-		if (this.getCurrentLab().getService(serialNumber) != null) {
-			return this.getCurrentLab().changeService(service);
-			
-		} else {
-			return false;
-		}
-	}
+//	public Boolean changeService(String longName, String shortName, Double price, String serialNumber) {
+//		Service service = new Service(longName, shortName, price, serialNumber,this.getCurrentLab());
+//		if (this.getCurrentLab().getService(serialNumber) != null) {
+//			return this.getCurrentLab().changeService(service);
+//			
+//		} else {
+//			return false;
+//		}
+//	}
 	
 	public void changeManagerData(){
 		//TODO changing the managers personal data 

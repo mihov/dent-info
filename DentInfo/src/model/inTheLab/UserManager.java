@@ -2,9 +2,12 @@ package model.inTheLab;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import model.db.DentistDAO;
+import model.db.ManagerDAO;
 import model.db.UserDAO;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.mainObjects.Dentist;
 import model.mainObjects.Person;
 
 public class UserManager {
@@ -39,7 +42,21 @@ public class UserManager {
 		return false;
 	}
 	
-	public Person getUser(String email){
+	public synchronized Person getUser(String email){
 		return registerredUsers.get(email);
+	}
+	
+	public void registerManager(String password,String email) throws InvalidEmailException, InvalidUserNameException{
+		Manager m = new Manager(email, password,0);
+		System.out.println("manager made");
+		registerredUsers.put(email, m);
+		ManagerDAO.getInstance().saveUser(m);
+	}
+	
+	public void registerDentist(String password,String email,DentalLaboratory dl) throws InvalidEmailException, InvalidUserNameException{
+		Dentist m = new Dentist(email, password,0,dl);
+		System.out.println("manager made");
+		registerredUsers.put(email, m);
+		DentistDAO.getInstance().saveDentist(m);
 	}
 }

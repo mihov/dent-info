@@ -20,11 +20,10 @@ public class RegisterLabServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String bulstat = request.getParameter("bulstat");
-		String website = request.getParameter("website");
 		String address = request.getParameter("occupation");
 		System.out.println(request.getSession());
 		String user = (String) request.getSession().getAttribute("logged");
-		System.out.println(user);
+		System.out.println("---------- email: " + user + "------------");
 		Manager manager = ManagersManager.getInstance().getManager(user);
 		System.out.println(manager.getEmail());
 		System.out.println("----------------tuk vzema manager---------------");

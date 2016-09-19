@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
 import model.inTheLab.ManagersManager;
+import model.inTheLab.UserManager;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -25,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println(password);
 		System.out.println(email);
 		try {
-			ManagersManager.getInstance().registerManager(password, email);
+			UserManager.getInstance().registerManager(password, email);
 		} catch (InvalidEmailException e) {
 			System.out.println("Someone added an ivalid email");
 			//TODO add message page when invalid email
