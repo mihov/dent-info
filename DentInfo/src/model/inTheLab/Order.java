@@ -33,6 +33,20 @@ public class Order {
 		this.servicesList = new HashMap<>();
 		this.dateList = new HashMap<>();
 	}
+	
+	public String getStatus(){
+		String s = new String("");
+		if(isPayed){
+			s.concat("is payed");
+		}
+		if(isReady){
+			s.concat(" is ready");
+		}
+		if(s.isEmpty()){
+			return "not ready : not payed";
+		}
+		return s;
+	}
 
 	public Integer getId() {
 		return id;

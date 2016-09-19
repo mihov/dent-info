@@ -62,7 +62,7 @@
 
 						<%for(Order o : dl.getAllOrders().values()){		%>	
 							<tr>					
-								<th rowspan="4">Order num:<%= o.getId() %>from:<%= o.getDentist().getEmail() %></th>
+								<th rowspan="4">Order num:<%= o.getId() %>from:<%= o.getDentist().getEmail()%> Status:<%= o.getStatus() %></th>
 							</tr>
 							<tr>
 								<th>Service serial number</th>
@@ -70,18 +70,26 @@
 								<th>Short name</th>
 								<th>Price</th>
 							</tr>
-							<%for(Integer i : o.getAllServices().keySet()){		%>		
-								<%for(Service s : o.getAllServices().get(i)){		%>	
+							<%for(Integer i : o.getAllServices().keySet()){	%>		
+								<%for(Service s : o.getAllServices().get(i)){%>	
 							<tr>
 								<th><%= s.getSerialNumber()					%></th>
 								<td><%= s.getLongName()						%></td>
 								<td><%= s.getShortName()					%></td>
 								<td><%= o.getPrice()						%></td>
 							</tr>
-								<%} 													%>
-							<%} 													%>
-							<th rowspan="4">Price for all:<%= o.getPrice() %></th>
-						<%} 													%>
+								<%} 										%>
+							<%} 											%>
+							<tr>
+								<th rowspan="2">Price for all:<%= o.getPrice() 	%></th>
+								<form action="SetOrderAsDeliveredServlet" method="POST">
+									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Delivered</button></a></td>
+								</form>
+								<form action="SetOrderAsReadyServlet" method="POST">
+									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Ready</button></a></td>
+								</form>
+							</tr>
+						<%} 												%>
 				</table>
 		</div>
 	</div>
