@@ -6,7 +6,7 @@
 	<head>
 	<%@include file="head.html"%>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Manager create service</title>
 		<%
 			String username = (String) request.getSession().getAttribute("logged");
 			RequestDispatcher rd = null;
@@ -57,9 +57,11 @@
 				</p>
 			</div>
 			<form action="AddServiceServlet" method="POST">
+				<h1>Create service</h1>
 				<p>Service short name	</p>	<input type="text" name="service_short_name" 	required>
 				<p>Service long name	</p>	<input type="text" name="service_long_name" 	required>
 				<p>Service price		</p>	<input type="text" name="service_price" 		required>
+				<br/>
 				<input 	type="submit" value="Submit" href="manager_create_service.jsp"					>
 			</form>
 			<div class="x_content">
