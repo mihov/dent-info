@@ -138,3 +138,7 @@ local.properties
 *.project
 *.jsdtscope
 DentInfo/.settings/org.eclipse.jdt.core.prefs
+*.component
+DentInfo/.settings/org.eclipse.wst.common.project.facet.core.xml
+*.container
+DentInfo/.settings/org.eclipse.wst.jsdt.ui.superType.name
