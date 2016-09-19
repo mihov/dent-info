@@ -56,6 +56,24 @@
 							class="btn btn-primary">Logout</button></a>
 				</p>
 			</div>
+				<table id="datatable-responsive"
+					class="table table-striped table-bordered dt-responsive nowrap"
+					cellspacing="0" width="100%">
+					<tr>
+						<th></th>
+						<th>Long name</th>
+						<th>Short name</th>
+						<th>Price</th>
+					</tr>
+						<%for(Order o : dl.getAllOrders().values()){		%>	
+							<tr>
+								<th><%= 						%></th>
+								<td><%= 						%></td>
+								<td><%= 						%></td>
+								<td><%= 						%></td>
+							</tr>
+						<%} 													%>
+				</table>
 		</div>
 	</div>
 	</body>

@@ -50,6 +50,10 @@ public class DentalLaboratory {
 		return Collections.unmodifiableMap(serviceList);
 	}
 	
+	public Map<Integer, Order> getAllOrders(){
+			return Collections.unmodifiableMap(ordersById);
+	}
+	
 	public int getLabID(){
 		return labId;
 	}

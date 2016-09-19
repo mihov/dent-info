@@ -74,14 +74,14 @@
 						<th>Short name</th>
 						<th>Price</th>
 					</tr>
-						<%for(Service s : dl.getAllServices().values()){	%>	
+						<%for(Service s : dl.getAllServices().values()){		%>	
 							<tr>
 								<th><%= s.getSerialNumber()						%></th>
 								<td><%= s.getLongName()							%></td>
 								<td><%= s.getShortName()						%></td>
 								<td><%= s.getPrice()							%></td>
 							</tr>
-						<%} 												%>
+						<%} 													%>
 				</table>
 			</div>
 		</div>

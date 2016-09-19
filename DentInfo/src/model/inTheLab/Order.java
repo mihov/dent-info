@@ -19,7 +19,7 @@ public class Order {
 	private Boolean isPayed;
 	private Boolean isReady;
 	private BufferedImage image;
-	private HashMap<ToothPosition, ArrayList<Service>> servicesList;
+	private HashMap<Integer, ArrayList<Service>> servicesList;
 
 	public Order(Patient patient, Dentist dentist) {
 		this.id = idCreator++;
@@ -80,7 +80,7 @@ public class Order {
 		this.image = image;
 	}
 
-	public void addService(ToothPosition position, Service service) {
+	public void addService(int position, Service service) {
 		if (!this.servicesList.containsKey(position)) {
 			this.servicesList.put(position, new ArrayList<>());
 		}
@@ -90,7 +90,7 @@ public class Order {
 
 	public void calculatePrice() {
 		Double total = 0.00;
-		for (Entry<ToothPosition, ArrayList<Service>> element : this.servicesList.entrySet()) {
+		for (Entry<Integer, ArrayList<Service>> element : this.servicesList.entrySet()) {
 			for (Service service_element : element.getValue()) {
 				total += service_element.getPrice();
 			}
@@ -102,7 +102,7 @@ public class Order {
 		StringBuilder builder = new StringBuilder();
 		builder.append("=== Service List ===\n");
 
-		for (Entry<ToothPosition, ArrayList<Service>> element : this.servicesList.entrySet()) {
+		for (Entry<Integer, ArrayList<Service>> element : this.servicesList.entrySet()) {
 			builder.append("   ");
 			builder.append(element.getKey());
 

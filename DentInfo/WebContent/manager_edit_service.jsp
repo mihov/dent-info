@@ -50,7 +50,7 @@
 				</div>
 				<form action="EditServiceServlet" method="POST">
 					<h1>Edit service</h1>
-					<p>Serail number	</p>			<input type="text" name="serial_number" 					required>
+					<p>Serail number	</p>			<input type="text" name="serial_number" 			required>
 					<p>Service new long name	</p>	<input type="text" name="service_new_long_name" 	required>
 					<p>Service new short name	</p>	<input type="text" name="service_new_short_name" 	required>
 					<p>Service new price 		</p>	<input type="text" name="service_new_price" 		required>
