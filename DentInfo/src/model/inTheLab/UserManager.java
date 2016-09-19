@@ -50,6 +50,7 @@ public class UserManager {
 		Manager m = new Manager(email, password,0);
 		System.out.println("manager made");
 		registerredUsers.put(email, m);
+		m.setUserTypeFk(1);
 		ManagerDAO.getInstance().saveUser(m);
 	}
 	
@@ -57,6 +58,7 @@ public class UserManager {
 		Dentist m = new Dentist(email, password,0,dl);
 		System.out.println("manager made");
 		registerredUsers.put(email, m);
+		m.setUserTypeFk(2);
 		DentistDAO.getInstance().saveDentist(m);
 	}
 }

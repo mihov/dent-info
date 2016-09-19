@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.exceptions.InvalidEmailException;
 import model.exceptions.InvalidUserNameException;
+import model.inTheLab.LaboratoryManager;
 import model.inTheLab.ManagersManager;
 import model.inTheLab.UserManager;
 
@@ -35,6 +36,7 @@ public class RegisterServlet extends HttpServlet {
 			//TODO add message page when invalid username
 		}
 		System.out.println("Manager registered successfully");
+		LaboratoryManager lm = LaboratoryManager.getInstatnce();
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}

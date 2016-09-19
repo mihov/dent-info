@@ -54,6 +54,10 @@ public abstract class Person {
 		this.fk_dentist_id = fk_dentist_id;
 		this.lab_id = lab_id;
 	}
+	
+	public void setUserTypeFk(int fk){
+		this.fk_user_type_id = fk;
+	}
 
 	public void setUserId(int user_id) {
 		this.user_id = user_id;
@@ -227,6 +231,8 @@ public abstract class Person {
 			builder.append(getLab_id()).append("\t|\t");
 		if (currentLab != null)
 			builder.append(currentLab.getName()).append("\t|\t");
+		if (fk_user_type_id != null)
+			builder.append(fk_user_type_id).append("\t|\t");
 		if (getEgn() != null)
 			builder.append(getEgn()).append("\t|\t");
 		if (getAddress() != null)

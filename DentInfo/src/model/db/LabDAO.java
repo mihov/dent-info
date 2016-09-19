@@ -48,6 +48,7 @@ public class LabDAO {
 			System.out.println("Error getting the labs!");
 			e.printStackTrace();
 		}
+
 		System.out.println("labs loaded successfully");
 		DBManager.getInstance().closeConnection();
 		return labs;
@@ -102,6 +103,5 @@ public class LabDAO {
 			e.printStackTrace();
 		}
 	}
-	
 	
 }

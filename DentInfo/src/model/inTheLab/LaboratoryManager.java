@@ -14,18 +14,21 @@ public class LaboratoryManager {
 	
 	private static LaboratoryManager labMan;
 	
-	private LaboratoryManager(){
-		registerredLaboratories = new ConcurrentHashMap<>();
-		try {
-			for(DentalLaboratory d : LabDAO.getInstance().getAllLabs()){
-				registerredLaboratories.put(d.getLabID(), d);
-				System.out.println(d.getBulstat() + " -bulstat " + d.getName() + " - name");
+	private  LaboratoryManager(){
+		synchronized(this){
+			registerredLaboratories = new ConcurrentHashMap<>();
+			try {
+				for(DentalLaboratory d : LabDAO.getInstance().getAllLabs()){
+					registerredLaboratories.put(d.getLabID(), d);
+					System.out.println(d.getBulstat() + " -bulstat " + d.getName() + " - name");
+				}
+			} catch (InvalidUserNameException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (InvalidUserNameException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
+
 	
 	public synchronized static  LaboratoryManager getInstatnce(){
 		if(labMan == null){
