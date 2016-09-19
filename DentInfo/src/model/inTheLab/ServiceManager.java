@@ -32,12 +32,14 @@ public class ServiceManager {
 	
 	public Map<Integer, Service> getAllServices(int lab_id){
 		HashMap<Integer, Service> services = new HashMap<>();
-		for(Integer i : services.keySet()){
-			Service s = services.get(i);
-			if(s.getLabId() == lab_id){
-			services.put(s.getSerialNumber(),s);
+		for(Service s : this.services.values()){
+			Service serv = s;
+			System.out.println("getting services -------------" + serv.getShortName() + " lab " + s.getLabId());
+			if(serv.getLabId() == lab_id){
+				services.put(s.getSerialNumber(),serv);
 			}
 		}
+		System.out.println("done adding services !!!!!!!!!!!!");
 		return services;
 	}
 	
@@ -45,6 +47,13 @@ public class ServiceManager {
 		System.out.println("service made");
 		services.put(s.getSerialNumber(), s);
 		ServiceDAO.getInstance().createService(s);
+	}
+	
+	public void editService(Service s,String newShortName,String newLongName,Double newPrice){
+		ServiceDAO.getInstance().changerService(s,newShortName,newLongName,newPrice);;
+		s.setShortName(newShortName);
+		s.setLongName(newLongName);
+		s.setPrice(newPrice);
 	}
 
 }

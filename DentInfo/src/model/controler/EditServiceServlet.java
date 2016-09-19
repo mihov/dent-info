@@ -3,6 +3,7 @@ package model.controler;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,25 +21,23 @@ import model.mainObjects.Person;
 public class EditServiceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String serviceShortName = request.getParameter("service_short_name");
+		String email = (String)request.getSession().getAttribute("logged");
+		System.out.println("email " + email + " ------------------------>");
+		Person p = UserManager.getInstance().getUser(email);
+		DentalLaboratory dl = LaboratoryManager.getInstatnce().getLab(p.getLab_id());
+		Map<Integer,Service> m = ServiceManager.getInstance().getAllServices(dl.getLabID());
+		Integer numb = Integer.parseInt(request.getParameter("serial_number"));
 		String serviceNewShortName = request.getParameter("service_new_long_name");
 		String serviceNewLongName = request.getParameter("service_new_short_name");
 		String serviceNewPrice = request.getParameter("service_new_price");
-		
-		Person p = UserManager.getInstance().getUser((String)request.getSession().getAttribute("logged"));
-		DentalLaboratory dl = LaboratoryManager.getInstatnce().getLab(p.getLab_id());
-		
-		for(Service s : dl.getAllServices().values()){
-			if(s.getShortName() == serviceShortName){
-				ServiceManager.getInstance().
-				s.setShortName(serviceNewShortName);
-				s.setShortName(serviceNewLongName);
-				s.setShortName(serviceNewPrice);
-			}
-		}
-		
-		
+		Double newPrice = Double.parseDouble(serviceNewPrice);
+		System.out.println("Entered the servlet");
+		System.out.println("serial number --------" );
+		Service s = ServiceManager.getInstance().getService(numb);
+		System.out.println("--------------" + s + "------------------");
+		ServiceManager.getInstance().editService(s, serviceNewShortName, serviceNewLongName, newPrice);
+		RequestDispatcher rd = request.getRequestDispatcher("manager_create_service.jsp");
+		rd.forward(request, response);
 	}
 
 }

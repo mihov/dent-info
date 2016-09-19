@@ -143,17 +143,8 @@ public class DentalLaboratory {
 		return this.serviceList.get(serviceID);
 	}
 
-	public Boolean addServiceToList(Service service) {
-		if (service != null) {
-			if (!this.serviceList.containsKey(service.getSerialNumber())) {
-				this.serviceList.put(service.getSerialNumber(), service);
-				return true;
-			} else {
-				return null; // service exist
-			}
-		} else {
-			return null; // service is null
-		}
+	public void addServiceToList(Service service) {
+		this.serviceList.put(service.getSerialNumber(), service);
 	}
 	
 	public Boolean changeService(Service service) {

@@ -48,12 +48,12 @@
 				</div>
 				<form action="EditServiceServlet" method="POST">
 					<h1>Edit service</h1>
-					<p>Service short name	</p>	<input type="text" name="service_short_name" 			required>
+					<p>Serail number	</p>			<input type="text" name="serial_number" 					required>
 					<p>Service new long name	</p>	<input type="text" name="service_new_long_name" 	required>
 					<p>Service new short name	</p>	<input type="text" name="service_new_short_name" 	required>
 					<p>Service new price 		</p>	<input type="text" name="service_new_price" 		required>
 					<br/>
-					<input 	type="submit" value="Submit" href="manager_create_service.jsp"					>
+					<input 	type="submit" value="Submit" href="manager_create_service.jsp">
 				</form>
 			</div>
 		</div>
