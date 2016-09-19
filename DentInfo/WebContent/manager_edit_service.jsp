@@ -46,6 +46,7 @@
 								class="btn btn-primary">Logout</button></a>
 					</p>
 				</div>
+				</div>
 				<form action="AddServiceServlet" method="POST">
 					<h1>Edit service</h1>
 					<p>Service short name	</p>	<input type="text" name="service_short_name" 			required>
