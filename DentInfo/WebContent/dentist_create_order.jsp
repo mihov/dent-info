@@ -1,6 +1,10 @@
+<%@page import="model.inTheLab.Basket"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% response.setHeader("Pragma", "No-cache"); response.setHeader("Pragma", "No-cache");
+response.setDateHeader("Expires", 0); response.setDateHeader("Expires", 0);
+response.setHeader("Cache-Control", "no-cache"); %>
 <html>
 
 <%@ page import="model.mainObjects.*, java.util.ArrayList"%>
@@ -14,6 +18,10 @@
 	ArrayList<Patient> patientList = PatientManager.getInstance().getPatientsByDentist(dentist);
 	String firstName = dentist.getFirstName();
 	String lastName = dentist.getLastName();
+	if(session.getAttribute("basket") == null){
+		session.setAttribute("basket", new Basket());
+	}
+	
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -36,6 +36,9 @@ public class RegisterPatientServlet extends HttpServlet {
 			// TODO add message page when invalid username
 		}
 		System.out.println("Patient registered successfully");
+		response.setHeader("Pragma", "No-cache"); response.setHeader("Pragma", "No-cache");
+		response.setDateHeader("Expires", 0); response.setDateHeader("Expires", 0);
+		response.setHeader("Cache-Control", "no-cache"); 
 
 		RequestDispatcher rd = request.getRequestDispatcher("dentist_list_patients.jsp");
 		rd.forward(request, response);

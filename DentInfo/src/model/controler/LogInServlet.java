@@ -31,6 +31,9 @@ public class LogInServlet extends HttpServlet {
 		System.out.println(email);
 		System.out.println(password);
 		System.out.println("Someone is trying to log in");
+		response.setHeader("Pragma", "No-cache"); response.setHeader("Pragma", "No-cache");
+		response.setDateHeader("Expires", 0); response.setDateHeader("Expires", 0);
+		response.setHeader("Cache-Control", "no-cache");
 		if (UserManager.getInstance().validLogIn(email, password)) {
 			request.getSession().setAttribute("user", UserManager.getInstance().getUser(email));
 			request.getSession().setAttribute("logged", email);
