@@ -84,8 +84,8 @@
 								<th rowspan="2">Price for all:<%= o.getPrice() 	%></th>
 								<form action="SetOrderStatusServlet" method="POST">
 									<% request.getSession().setAttribute("ored", o.getId()); %>
-									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Delivered</button></a></td>
-									<td><a href="manager_get_orders.jsp"><button type="submit"class="btn btn-primary">Set As Ready</button></a></td>
+									<td><a href="manager_get_orders.jsp"><input type="submit" name="act" value="payed" class="btn btn-primary">Set As Delivered</input></a></td>
+									<td><a href="manager_get_orders.jsp"><input type="submit" name="act" value="ready" class="btn btn-primary">Set As Ready</input></a></td>
 								</form>
 							</tr>
 						<%} 												%>
