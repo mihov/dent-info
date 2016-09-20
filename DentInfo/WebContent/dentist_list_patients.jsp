@@ -1,3 +1,4 @@
+<%@ page errorPage="login.html" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -70,41 +71,41 @@ response.setHeader("Cache-Control", "no-cache"); %>
 							for (Patient patient : patientList) {
 						%>
 						<tr>
-							<th>
+							<td>
 								<%
 									out.print(patient.getFirstName());
 								%>
-							</th>
-							<th>
+							</td>
+							<td>
 								<%
 									out.print(patient.getLastName());
 								%>
-							</th>
-							<th>
+							</td>
+							<td>
 								<%
 									out.print(patient.getEmail());
 								%>
-							</th>
-							<th>
+							</td>
+							<td>
 								<%
 									out.print(patient.getEgn());
 								%>
-							</th>
-							<th>
+							</td>
+							<td>
 								<%
 									out.print(patient.getPhone());
 								%>
-							</th>
-							<th>
+							</td>
+							<td>
 								<%
 									out.print(patient.getAddress());
 								%>
-							</th>
-							<th><form action="dentist_edit_patient.jsp">
+							</td>
+							<td><form action="dentist_edit_patient.jsp">
 									<input type="hidden" name="edit"
 										value="		<%out.print(patient.getUser_id());%>"> <input
 										type="submit" value="Edit">
-								</form></th>
+								</form></td>
 						</tr>
 						<%
 							}
