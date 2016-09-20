@@ -1,3 +1,4 @@
+<%@ page errorPage="login.html" %>
 <%@page import="model.mainObjects.Person"%>
 <%@page import="model.inTheLab.UserManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

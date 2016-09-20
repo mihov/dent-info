@@ -12,6 +12,7 @@ import model.exceptions.InvalidUserNameException;
 import model.inTheLab.DentalLaboratory;
 import model.inTheLab.Manager;
 import model.mainObjects.Person;
+import model.tools.SendMail;
 
 public class ManagerDAO {
 	
@@ -70,6 +71,11 @@ public class ManagerDAO {
                 int last_inserted_id = rs.getInt(1);
                 manager.setUserId(last_inserted_id);
             }
+			String sub = "New account!!!";
+			String msg = "<h1>You have an account</h1><a href=\"http://dent-info.net\"><h1>www.dent-info.net</h1></a><h1>password: "
+					+ manager.getPassword() + "</h1>";
+			SendMail.sendMail(manager.getEmail(), sub, msg);
+			
 			DBManager.getInstance().closeConnection();
 			System.out.println("User added successfully");
 		} catch (SQLException e) {

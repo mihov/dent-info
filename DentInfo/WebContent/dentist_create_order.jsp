@@ -1,4 +1,4 @@
-
+<%@ page errorPage="login.html" %>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.prefs.BackingStoreException"%>
 <%@page import="model.inTheLab.ServiceManager"%>
@@ -151,6 +151,56 @@
 					</div>
 
 					<div class="x_content">
+						<table id="datatable-responsive"
+							class="table table-striped table-bordered dt-responsive nowrap"
+							cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Position</th>
+									<th>Name</th>
+									<th>Price</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									for (Entry<Integer, ArrayList<Service>> element : basket.getAll().entrySet()) {
+										int index = 0;
+										for (Service service_element : element.getValue()) {
+								%>
+								<tr>
+									<td><%=element.getKey()%></td>
+									<td><%=service_element.getLongName()%></td>
+									<td><%=service_element.getPrice()%></td>
+									<td>
+										<form method="get" action="dentist_create_order.jsp">
+											<input type="hidden" name="action" value="DELETE"> <input
+												type="hidden" name="position" value="<%=element.getKey()%>">
+											<input type="hidden" name="index" value="<%=index++%>">
+											<input type="submit" value="DELETE">
+										</form>
+
+									</td>
+								</tr>
+								<%
+									}
+								%>
+
+								<%
+									}
+								%>
+								<tr>
+									<th></th>
+									<th>Total:</th>
+									<th><%=basket.getTotal()%>></th>
+									<th></th>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+					<div class="x_content">
 						<br>
 						<form class="form-horizontal form-label-left"
 							action="dentist_create_order.jsp" method="get">
@@ -172,69 +222,6 @@
 											}
 										%>
 									</select>
-								</div>
-							</div>
-
-
-
-							<div class="x_content">
-								<table id="datatable-responsive"
-									class="table table-striped table-bordered dt-responsive nowrap"
-									cellspacing="0" width="100%">
-									<thead>
-										<tr>
-											<th>Position</th>
-											<th>Name</th>
-											<th>Price</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<%
-											for (Entry<Integer, ArrayList<Service>> element : basket.getAll().entrySet()) {
-												int index = 0;
-												for (Service service_element : element.getValue()) {
-										%>
-										<tr>
-											<td><%=element.getKey()%></td>
-											<td><%=service_element.getLongName()%></td>
-											<td><%=service_element.getPrice()%></td>
-											<td><a
-												href="dentist_create_order.jsp?action=DELETE&position=<%=element.getKey()%>>&index=<%=index++%>>">
-													Delete <%=index - 1%> ##<%=element.getKey()%></a></td>
-											<td><a
-												href="dentist_create_order.jsp?action=DELETE&position=48&index=0">
-													Delete</a></td>
-										</tr>
-										<%
-											}
-										%>
-
-										<%
-											}
-										%>
-										<tr>
-											<th></th>
-											<th>Total:</th>
-											<th><%=basket.getTotal()%>></th>
-											<th></th>
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-
-
-
-
-
-
-							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Default
-									Input</label>
-								<div class="col-md-9 col-sm-9 col-xs-12">
-									<input type="text" class="form-control"
-										placeholder="Default Input">
 								</div>
 							</div>
 
